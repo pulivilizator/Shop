@@ -1,0 +1,13 @@
+
+<ul class="category__list">
+    {% for cat in categories %}
+        <li>
+            <a href="{{ cat.get_absolute_url }}" class="category__title">{{ cat.name }}</a>
+            <ul>
+                {% for subcat in cat.subcategories.all %}
+                    <li><a href="{{ cat.get_absolute_url }}{{ subcat.get_absolute_url }}">{{ subcat.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

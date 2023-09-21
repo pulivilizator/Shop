@@ -1,12 +1,15 @@
+{% load shop_app_tags %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/null.css">
-    <link rel="stylesheet" href="../static/css/slider.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/null.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}{{ title }}{% endblock title %}</title>
 </head>
 <body>
     <div class="conteiner">
@@ -33,7 +36,7 @@
                     
                     <div class="header__main">
                         <div class="header__logo">
-                            <img src="../static/img/logo.png" alt="logo" class="header__logo_img">
+                            <a href="{% url 'shop:home' %}"><img src="../static/img/logo.png" alt="logo" class="header__logo_img"></a>
                         </div>
 
                         <div class="header__pay">
@@ -64,71 +67,7 @@
                     </div>
 
                     <div class="header__category">
-                        <ul class="category__list">
-                            <li>
-                                <a href="#" class="category__title">Противоударные чехлы</a>
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="category__title">Голографические чехлы</a>
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="category__title">Жидкие чехлы с блестками</a>
-                                <ul>
-                                    <li><a href="#">12333333333333333 3333333333333333333 33333333333333333333</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="category__title">Чехлы книжки</a>
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="category__title">Деревянные чехлы</a>
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="category__title">Силиконовые чехлы</a>
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="category__title">Пластиковые чехлы</a>
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        {% show_categories %}
                     </div>
 
                 </div>
@@ -136,6 +75,7 @@
         </header>
 
         <div class="content">
+            {% block content %}
             <div class="slider">
                 <div class="slideshow-container">
 
@@ -423,6 +363,7 @@
                     </div>
                 </div>
             </div>
+        {% endblock content%}
         </div>
 
         <footer>
@@ -485,7 +426,9 @@
             </div>
         </footer>
     </div>
-    <script src="../static/js/slider.js"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="{% static 'js/select.js' %}"></script>
+    <script src="{% static 'js/filter.js' %}"></script>
     <script src="https://kit.fontawesome.com/18a5f50620.js" crossorigin="anonymous"></script>
 </body>
 </html>

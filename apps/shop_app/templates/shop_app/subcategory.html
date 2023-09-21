@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="content__container">
+        <div class="content__products">
+            <form action="#" method="get" id="products__filter" class="content__filter">
+                <div class="content__filter_fields">
+                  <div class="filter__field_title"><div class="title">Фильтр по параметрам</div><div class="title__icon"><i class="fa-solid fa-filter fa-lg"></i></div></div>
+                  <div class="filter__field_price">
+                    <div class="filter__price_title" onclick="togglePriceInput('price')"><div class="price__title">Цена руб.</div><div class="price__icon"><i class="fa-solid fa-chevron-down fa-lg"></i></div></div>
+                    <div class="price__input" id="price_input">
+                      <input type="text" name="min_price" id="min_price" placeholder="0" value="{{ min_price }}">
+                      <input type="text" name="max_price" id="max_price" placeholder="999999" value="{{ max_price }}">
+                    </div>
+                  </div>
+                  <div class="filter__field_checkbox">
+                    {% for type, val_list in properties.items %}
+                    <div class="filter__checkbox_title" onclick="togglePriceInput('checkbox', '{{ type.name }}')"><div class="checkbox__title">{{ type.name }}</div><div class="checkbox__icon"><i class="fa-solid fa-chevron-down fa-lg"></i></div></div>
+                    <div class="checkboxes" id="{{ type.name }}">
+                      {% for v in val_list %}
+                        {% if v.value in checkboxes %}
+                            <div class="checkbox"><input type="checkbox" name="check" id="{{ v.value }}" value="{{ v.value }}" checked> <div class="checkbox__name">{{ v.value }}</div></div>
+                        {% else %}
+                            <div class="checkbox"><input type="checkbox" name="check" id="{{ v.value }}" value="{{ v.value }}"> <div class="checkbox__name">{{ v.value }}</div></div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                      {% endfor %}
+                  </div>
+
+                  <div class="form__buttons">
+                    <button class="submit" type="submit">Применить</button>
+                    <button class="reset" onclick="resetFilters()">Сбросить</button>
+                  </div>
+                </div>
+            </form>
+            <div class="content__product_list">
+                <div class="product__info">
+                    <div class="category__name_site"><a href="http://">Главная</a> / {{ title }}</div>
+                    <div class="category__name">{{ title }}</div>
+                    <div class="products__count">Всего {{ products.count }} товаров</div>
+                    <div class="price__sort">
+                        <div class="sort__text">Сортировка</div>
+                        <div class="select">
+                            <div class="custom-select" style="width:200px;">
+                                <select name="sort" id="sort" form="products__filter" onchange="this.form.submit()">
+                                  <option value="{{ sorted_field }}">{{ select_op }}</option>
+                                  {% for s, v in sort.items %}
+                                    <option value="{{ s }}" >{{ v }}</option>
+                                  {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="product__list">
+                    {% for p in products %}
+                    <li>
+                        <div class="img"><a href="http://"><img src="{{ p.imagine.url }}" alt="product"></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="http://">{{ p.name|truncatewords:'8' }}</a></div>
+                            <div class="description">{{ p.description|truncatewords:'15' }}</div>
+                            <div class="price">{{ p.price }} руб.</div>
+                            <div class="more">
+                                <button class="more__button"><a href="http://">Подробнее</a></button>
+                                <button class="basket__button"><a href="http://"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a></button>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

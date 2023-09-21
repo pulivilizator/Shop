@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="content__container">
+    <div class="content__subcategories">
+        <div class="content__subcategories_container">
+            {% for cat in subcategories %}
+                <div class="category">
+                    <div class="category_img"><a href="{{ slug }}{{ cat.get_absolute_url }}"><img src="{{ cat.imagine.url }}" alt="category"></a></div>
+                    <h4><a href="{{ slug }}{{ cat.get_absolute_url }}">{{ cat.name }}</a></h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+{% endblock content %}

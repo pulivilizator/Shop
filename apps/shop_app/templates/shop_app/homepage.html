@@ -1,1 +1,134 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="slider">
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+        <img src="{% static 'slider/pc.jpg' %}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+        <img src="{% static 'slider/vkart.jpg' %}" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+        <img src="{% static 'slider/perf.jpg' %}" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlidesM(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlidesM(1)">&#10095;</a>
+    </div>
+    <br>
+
+</div>
+<div class="content__container">
+    {% for cat, products in elements.items %}
+    <div class="content__category">
+        <div class="category__title"><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></div>
+        <ul class="category__list">
+            {% for product in products %}
+                {% if product %}
+                    <li>
+                        <div class="img"><a href="{{ product.get_absolute_url }}"><img src="{{ product.imagine.url }}" alt=""><div class="hit">Хит продаж!</div></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="{{ product.get_absolute_url }}">{{ product.name|truncatewords:'8' }}</a></div>
+                            <div class="description">{{ product.description|truncatewords:'15' }}</div>
+                            <div class="price">{{ product.price }} руб.</div>
+                            <div class="more"><button><a href="{{ product.get_absolute_url }}">Подробнее</a></button></div>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="category__all"><button><a href="{{ cat.get_absolute_url }}">Смотреть все</a></button></div>
+    </div>
+    {% endfor %}
+
+    <div class="content__populated_category">
+        <h2>Популярные категории</h2>
+        <div class="content__populated_container">
+            {% for cat in populated_categories %}
+            <div class="category">
+                <div class="category_img"><a href="{{ cat.get_absolute_url }}"><img src="{{ cat.imagine.url }}" alt="category"></a></div>
+                <h4><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></h4>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="content__news">
+        <div class="content__news_link">
+            <div class="news__title">Новости</div>
+            <a href="http://">Смотреть все</a>
+        </div>
+        <div class="content__news_container">
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+            <div class="news">
+                <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
+                <div class="content__news_text">
+                    <div class="news__date">2021-10-07 10:54:52</div>
+                    <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
+                    <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

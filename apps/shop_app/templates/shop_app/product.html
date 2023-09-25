@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__detail_product">
+        <div class="detail__product_container">
+            <div class="content__category_name"><a href="{% url 'shop:home' %}">Главная</a> / <a href="{{ subcat.category.get_absolute_url }}{{ subcat.get_absolute_url}}">{{ subcat.name }}</a> / {{ product.name }}</div>
+
+            <div class="detail__product_main">
+                <div class="detail__product_img"><img src="{{ product.imagine.url }}" alt="product"></div>
+                <div class="detail__product_info">
+                    <div class="detail__product_name">{{ product.name }}</div>
+                    <div class="detail__product_availidlike">
+                        {% if product.available %}
+                        <div class="detail__product_available">В наличии</div>
+                        {% else %}
+                        <div class="detail__product_notavailable">Нет в наличии</div>
+                        {% endif %}
+                        <div class="detail__product_id">ID товара: {{ product.id }}</div>
+                        <div class="detail__product_like"><i class="fa-regular fa-heart fa-lg"></i> В избранное</div>
+                    </div>
+                    <div class="detail__product_price">{{ product.price }} руб.</div>
+                    <div class="detail_product_description">
+                        <div class="title">Описание</div>
+                        <div class="description">{{ product.description }}</div>
+                    </div>
+                    <div class="detail__product_buy">
+                        <button class="buy__addcart"><a href="http://"><i class="fa-solid fa-cart-shopping fa-lg"></i> В корзину</a></button>
+                        <button class="buy__buynow"><a href="http://"><i class="fa-solid fa-arrows-turn-right fa-rotate-180 fa-lg"></i> Купить сейчас</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail__product_propreviews">
+                <div class="product__propreviews_buttons">
+                    <button class="properties active" onclick="showProperties()"><i class="fa-solid fa-list fa-lg"></i> Характеристики</button>
+                    <button class="reviews" onclick="showReviews()"><i class="fa-regular fa-message fa-lg"></i> Отзывы</button>
+                </div>
+
+                <div class="product__properties active">
+                    <div class="prop__container">
+                        <div class="property__title">Характеристики:</div>
+                        <ul class="property__list">
+                            {% for group, prop_list in properties.items %}
+                            <li>
+                                <div class="property__group">{{ group.name }}:</div>
+                                <ul class="property">
+                                    {% for type, value in prop_list.items %}
+                                    <li>
+                                        <div class="property__type">{{ type.name }}:</div>
+                                        <div class="property__value">{{ value.value }}</div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product__reviews">Отзывы</div>
+            </div>
+
+            <div class="detail__product_recommended">
+                <div class="product__recommended_title">Рекомендуем посмотреть</div>
+                <ul class="recommended__list">
+                    <li>
+                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
+                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
+                            <div class="price">700.00 руб.</div>
+                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
+                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
+                            <div class="price">700.00 руб.</div>
+                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
+                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
+                            <div class="price">700.00 руб.</div>
+                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
+                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
+                            <div class="price">700.00 руб.</div>
+                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
+                        <div class="product__text">
+                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
+                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
+                            <div class="price">700.00 руб.</div>
+                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

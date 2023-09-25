@@ -7,7 +7,7 @@ class Category(models.Model):
     category = models.ForeignKey('self', related_name='subcategories', on_delete=models.CASCADE, blank=True, null=True,
                                  limit_choices_to={'category__isnull': True})
     name = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=50, unique=True)
     imagine = models.ImageField(upload_to='subcategory/%Y/%m/%d', blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -30,7 +30,8 @@ class Category(models.Model):
 
 class Product(models.Model):
     """Модель товара"""
-    subcategory = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(Category, related_name='products',
+                                    on_delete=models.CASCADE, limit_choices_to={'category__isnull': False})
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
     imagine = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
@@ -52,6 +53,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('shop:product', kwargs={'product_id': self.pk, 'product_slug': self.slug})
 
 
 class PropertyGroup(models.Model):

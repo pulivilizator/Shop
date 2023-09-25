@@ -200,6 +200,9 @@ h3 {
 .conteiner .content .content__container .content__category .category__list li .img {
   position: relative;
 }
+.conteiner .content .content__container .content__category .category__list li .img img {
+  width: 200px;
+}
 .conteiner .content .content__container .content__category .category__list li .img .hit {
   position: absolute;
   left: 5px;
@@ -483,7 +486,6 @@ h3 {
   justify-content: start;
   background: 0;
   overflow: auto;
-  height: 150px;
 }
 .conteiner .content .content__container .content__products .content__filter .content__filter_fields .filter__field_checkbox .checkboxes.active .checkbox {
   display: flex;
@@ -571,10 +573,13 @@ h3 {
   justify-content: space-between;
   width: 255px;
   border: 1px solid rgba(128, 128, 128, 0.449);
-  margin: 0 10px 10px 10px;
+  margin: 10px 8px;
 }
 .conteiner .content .content__container .content__products .content__product_list .product__list li .img {
   margin-top: 20px;
+}
+.conteiner .content .content__container .content__products .content__product_list .product__list li .img img {
+  width: 200px;
 }
 .conteiner .content .content__container .content__products .content__product_list .product__list li .product__text {
   display: inline-flex;

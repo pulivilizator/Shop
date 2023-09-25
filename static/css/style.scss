@@ -202,6 +202,9 @@ h3 {
             border: 1px solid rgba(128, 128, 128, 0.449);
             .img {
               position: relative;
+              img {
+                width: 200px;
+              }
               .hit {
                 position: absolute;
                 left: 5px;
@@ -497,7 +500,6 @@ h3 {
                 justify-content: start;
                 background: 0;
                 overflow: auto;
-                height: 150px;
                 .checkbox {
                   display: flex;
                   margin: 10px 0 10px 0;
@@ -589,9 +591,12 @@ h3 {
               justify-content: space-between;
               width: 255px;
               border: 1px solid rgba(128, 128, 128, 0.449);
-              margin: 0 10px 10px 10px;
+              margin: 10px 8px;
               .img {
                 margin-top: 20px;
+                img {
+                  width: 200px;
+                }
               }
               .product__text {
                 display: inline-flex;

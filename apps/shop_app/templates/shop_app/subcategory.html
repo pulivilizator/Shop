@@ -36,7 +36,7 @@
             </form>
             <div class="content__product_list">
                 <div class="product__info">
-                    <div class="category__name_site"><a href="http://">Главная</a> / {{ title }}</div>
+                    <div class="category__name_site"><a href="{% url 'shop:home' %}">Главная</a> / {{ title }}</div>
                     <div class="category__name">{{ title }}</div>
                     <div class="products__count">Всего {{ products.count }} товаров</div>
                     <div class="price__sort">
@@ -56,13 +56,13 @@
                 <ul class="product__list">
                     {% for p in products %}
                     <li>
-                        <div class="img"><a href="http://"><img src="{{ p.imagine.url }}" alt="product"></a></div>
+                        <div class="img"><a href="{{ p.get_absolute_url }}"><img src="{{ p.imagine.url }}" alt="product"></a></div>
                         <div class="product__text">
-                            <div class="title"><a href="http://">{{ p.name|truncatewords:'8' }}</a></div>
+                            <div class="title"><a href="{{ p.get_absolute_url }}">{{ p.name|truncatewords:'8' }}</a></div>
                             <div class="description">{{ p.description|truncatewords:'15' }}</div>
                             <div class="price">{{ p.price }} руб.</div>
                             <div class="more">
-                                <button class="more__button"><a href="http://">Подробнее</a></button>
+                                <button class="more__button"><a href="{{ p.get_absolute_url }}">Подробнее</a></button>
                                 <button class="basket__button"><a href="http://"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a></button>
                             </div>
                         </div>

@@ -14,6 +14,8 @@ from pathlib import Path
 
 from .config import config
 
+import redis
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -147,3 +149,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+REDIS_HOST = CONFIG.redis.host
+REDIS_PORT = CONFIG.redis.port
+REDIS_DB = CONFIG.redis.db
+
+r = redis.Redis(host=REDIS_HOST,
+                port=REDIS_PORT,
+                db=REDIS_DB, )
+
+CATEGORY_REDIS_KEY = 'category:views'
+PRODUCT_REDIS_KEY = 'product:views'

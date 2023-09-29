@@ -159,7 +159,7 @@ h3 {
 .conteiner .content {
   flex: 1 1 auto;
   width: 100%;
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(247, 247, 247);
 }
 .conteiner .content .content__container {
   width: 90%;
@@ -638,8 +638,6 @@ h3 {
   width: 40%;
   height: 100%;
   background-color: #21213f;
-}
-.conteiner .content .content__container .content__products .content__product_list .product__list li .product__text .more .basket__button a {
   color: white;
 }
 .conteiner .content .content__container .content__products .content__product_list .product__list li .product__text .more .basket__button:hover {

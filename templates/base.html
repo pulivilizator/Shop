@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/null.css' %}">
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
     <link rel="stylesheet" href="{% static 'css/product_detail_style.css' %}">
     <title>{% block title %}{{ title }}{% endblock title %}</title>
 </head>
@@ -63,7 +64,7 @@
                             <a href="#" class="header__user_icon"><i class="fa-regular fa-user fa-2xl"></i></a>
                             <a href="#" class="header__user_icon"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></a>
                             <a href="#" class="header__user_icon"><i class="fa-regular fa-heart fa-2xl"></i></a>
-                            <a href="#" class="header__user_icon"><i class="fa-solid fa-cart-arrow-down fa-2xl"></i></a>
+                            <a href="{% url 'cart:cart' %}" class="header__user_icon"><i class="fa-solid fa-cart-arrow-down fa-2xl"></i></a>
                         </div>
                     </div>
 
@@ -77,294 +78,8 @@
 
         <div class="content">
             {% block content %}
-            <div class="slider">
-                <div class="slideshow-container">
-
-                    <div class="mySlides fade">
-                    <img src="../static/slider/pc.jpg" style="width:100%">
-                    </div>
-                
-                    <div class="mySlides fade">
-                    <img src="../static/slider/vkart.jpg" style="width:100%">
-                    </div>
-                
-                    <div class="mySlides fade">
-                    <img src="../static/slider/perf.jpg" style="width:100%">
-                    </div>
-                
-                    <a class="prev" onclick="plusSlidesM(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlidesM(1)">&#10095;</a>
-                </div>
-                <br>
-                
-            </div>
-            <div class="content__container">
-                <div class="content__category">
-                    <div class="category__title"><a href="http://">CATEGORY</a></div>
-                    <ul class="category__list">
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="category__all"><button><a href="http://">Смотреть все</a></button></div>
-                </div>
-                <div class="content__category">
-                    <div class="category__title"><a href="http://">CATEGORY</a></div>
-                    <ul class="category__list">
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="category__all"><button><a href="http://">Смотреть все</a></button></div>
-                </div>
-                <div class="content__category">
-                    <div class="category__title"><a href="http://">CATEGORY</a></div>
-                    <ul class="category__list">
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="img"><a href="http://"><img src="../static/time/1.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                            <div class="product__text">
-                                <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                                <div class="price">700.00 руб.</div>
-                                <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="category__all"><button><a href="http://">Смотреть все</a></button></div>
-                </div>
-
-                <div class="content__populated_category">
-                    <h2>Популярные категории</h2>
-                    <div class="content__populated_container">
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                        <div class="category">
-                            <div class="category_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="category"></a></div>
-                            <h4><a href="http://">Category</a></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="content__news">
-                    <div class="content__news_link">
-                        <div class="news__title">Новости</div>
-                        <a href="http://">Смотреть все</a>
-                    </div>
-                    <div class="content__news_container">
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                        <div class="news">
-                            <div class="news_img"><a href="http://"><img src="../static/time/v2.jpeg" alt="news"></a></div>
-                            <div class="content__news_text">
-                                <div class="news__date">2021-10-07 10:54:52</div>
-                                <div class="news__title"><a href="http://">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, nobis.</a></div>
-                                <div class="news__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quis itaque atque adipisci molestias temporibus.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endblock content%}
+            <div class="content__container"></div>
+            {% endblock content %}
         </div>
 
         <footer>
@@ -427,10 +142,12 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{% static 'js/slider.js' %}"></script>
     <script src="{% static 'js/select.js' %}"></script>
     <script src="{% static 'js/filter.js' %}"></script>
     <script src="{% static 'js/detail.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
     <script src="https://kit.fontawesome.com/18a5f50620.js" crossorigin="anonymous"></script>
 </body>
 </html>

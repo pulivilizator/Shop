@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
 
     'apps.shop_app.apps.ShopAppConfig',
+    'apps.cart.apps.CartConfig',
 
     'django_json_widget',
     'debug_toolbar',
@@ -75,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.cart.context_processors.cart',
             ],
         },
     },
@@ -154,9 +156,5 @@ REDIS_HOST = CONFIG.redis.host
 REDIS_PORT = CONFIG.redis.port
 REDIS_DB = CONFIG.redis.db
 
-r = redis.Redis(host=REDIS_HOST,
-                port=REDIS_PORT,
-                db=REDIS_DB, )
 
-CATEGORY_REDIS_KEY = 'category:views'
-PRODUCT_REDIS_KEY = 'product:views'
+CART_SESSION_ID = 'cart'

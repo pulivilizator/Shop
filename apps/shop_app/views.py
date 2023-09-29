@@ -4,13 +4,12 @@ from django.views import generic
 
 from . import utils
 from . import models
-from shop import settings
 
 from decimal import Decimal as D
-import redis
 
 
 class HomePage(utils.DataMixin, generic.ListView):
+    """Главная страница"""
     template_name = 'shop_app/homepage.html'
     context_object_name = 'elements'
 
@@ -29,6 +28,7 @@ class HomePage(utils.DataMixin, generic.ListView):
 
 
 class CategoryPage(utils.DataMixin, generic.ListView):
+    """Список подкатегорий конкретной категории"""
     model = models.Category
     template_name = 'shop_app/category.html'
     context_object_name = 'subcategories'
@@ -45,6 +45,7 @@ class CategoryPage(utils.DataMixin, generic.ListView):
 
 
 class SubcategoryPage(utils.DataMixin, generic.ListView):
+    """Список товаров подкатегории"""
     model = models.Category
     template_name = 'shop_app/subcategory.html'
     context_object_name = 'products'
@@ -94,6 +95,7 @@ class SubcategoryPage(utils.DataMixin, generic.ListView):
 
 
 class ProductPage(utils.DataMixin, generic.DetailView):
+    """Страница товара"""
     template_name = 'shop_app/product.html'
     model = models.Product
     context_object_name = 'product'
@@ -111,5 +113,7 @@ class ProductPage(utils.DataMixin, generic.DetailView):
         return context
 
     def get_properties(self, category, product):
-        return {group: {prop.type: prop.value for prop in models.Property.objects.filter(Q(product=product) & Q(group=group))}
-                for group in models.PropertyGroup.objects.filter(Q(category=category) & Q(properties__in=models.Property.objects.filter(product=product)))}
+        return {group: {prop.type: prop.value
+                        for prop in models.Property.objects.filter(Q(product=product) & Q(group=group))}
+                for group in models.PropertyGroup.objects.filter(Q(category=category) &
+                                                                 Q(properties__in=models.Property.objects.filter(product=product)))}

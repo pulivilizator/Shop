@@ -95,12 +95,10 @@
             width: 250px;
             height: 55px;
             background-color: orange;
-            a {
-              color: white;
-              font-size: 15px;
-              font-family: 'Times New Roman', Times, serif;
-              font-weight: 400;
-            }
+            color: white;
+            font-size: 15px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 400;
             &:hover {
               background: rgb(222, 145, 1);
             }

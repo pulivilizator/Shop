@@ -63,7 +63,11 @@
                             <div class="price">{{ p.price }} руб.</div>
                             <div class="more">
                                 <button class="more__button"><a href="{{ p.get_absolute_url }}">Подробнее</a></button>
-                                <button class="basket__button"><a href="http://"><i class="fa-solid fa-basket-shopping fa-2xl"></i></a></button>
+                                {% if p.id not in cart.cart.keys %}
+                                <button class="add_to_cart basket__button" data-product-id="{{ p.id }}"><i class="fa-solid fa-basket-shopping fa-2xl"></i></button>
+                                {% else %}
+                                <button class="in-cart basket__button" data-product-id="{{ p.id }}"><i class="fa-solid fa-check fa-lg"></i></button>
+                                {% endif %}
                             </div>
                         </div>
                     </li>

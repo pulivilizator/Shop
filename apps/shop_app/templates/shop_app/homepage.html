@@ -26,7 +26,7 @@
 <div class="content__container">
     {% for cat, products in elements.items %}
     <div class="content__category">
-        <div class="category__title"><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></div>
+        <div class="category__title"><a href="{{ cat.category.get_absolute_url }}{{ cat.get_absolute_url }}">{{ cat.name }}</a></div>
         <ul class="category__list">
             {% for product in products %}
                 {% if product %}
@@ -42,7 +42,7 @@
                 {% endif %}
             {% endfor %}
         </ul>
-        <div class="category__all"><button><a href="{{ cat.get_absolute_url }}">Смотреть все</a></button></div>
+        <div class="category__all"><button><a href="{{ cat.category.get_absolute_url }}{{ cat.get_absolute_url }}">Смотреть все</a></button></div>
     </div>
     {% endfor %}
 
@@ -51,8 +51,8 @@
         <div class="content__populated_container">
             {% for cat in populated_categories %}
             <div class="category">
-                <div class="category_img"><a href="{{ cat.get_absolute_url }}"><img src="{{ cat.imagine.url }}" alt="category"></a></div>
-                <h4><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></h4>
+                <div class="category_img"><a href="{{ cat.category.get_absolute_url }}{{ cat.get_absolute_url }}"><img src="{{ cat.imagine.url }}" alt="category"></a></div>
+                <h4><a href="{{ cat.category.get_absolute_url }}{{ cat.get_absolute_url }}">{{ cat.name }}</a></h4>
             </div>
             {% endfor %}
         </div>

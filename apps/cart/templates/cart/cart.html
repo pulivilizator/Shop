@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__cart_container">
+        <div class="content__cart_name"><a href="{% url 'shop:home' %}">Главная</a> / Корзина</div>
+        <div class="cart__title">
+            <div class="main__title">Корзина</div>
+            <button class="clear">Очистить корзину</button>
+        </div>
+    {% if products %}
+        <div class="cart__products">
+            <ul class="product__list">
+                {% for p in products %}
+                    {% if p.quantity > 0 %}
+                    <li id="elem{{ p.id }}" class="element">
+                        <div class="product__container">
+                            <div class="product__main">
+                                <div class="title">Наименование товара</div>
+                                <div class="product__info">
+                                    <img src="{{ p.imagine.url }}" alt="product_img">
+                                    <div class="product__name">
+                                        <div class="name"><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></div>
+                                        <div class="code">Код товара: {{ p.id }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product__price">
+                                <div class="title">Цена</div>
+                                <div class="price">{{ p.price }} руб.</div>
+                            </div>
+                            <div class="product__count">
+                                <div class="title">Количество</div>
+                                <div class="count">
+                                    <button class="minus count__button" data-product-id="{{ p.id }}" data-quantity="{{ p.quantity }}">-</button>
+                                    <div class="counts" id="quantity{{ p.id }}">{{ p.quantity }}</div>
+                                    <button class="plus count__button" data-product-id="{{ p.id }}" data-quantity="{{ p.quantity }}">+</button>
+                                </div>
+                            </div>
+                            <div class="product__total_price">
+                                <div class="title">Стоимость</div>
+                                <div class="total__price" id="totalPrice{{ p.id }}">{{ p.total_price }} руб.</div>
+                            </div>
+                            <div class="remove"><button class="remove_button" data-product-id="{{ p.id }}"><i class="fa-solid fa-xmark fa-2xl"></i></button></div>
+                        </div>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="cart__order">
+            <div class="promo">
+                <form action="#" method="POST" id="promo">
+                    <input type="text" name="promo" placeholder="Введите промокод...">
+                    <button type="submit">Применить</button>
+                </form>
+            </div>
+            <div class="place__order">
+                <div class="cart__total_price" id="cart__total_price">Итоговая сумма: {{ cart.get_total_price }}</div>
+                <button><a href="#">Оформить заказ</a></button>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="cart__blank">Ваша корзина пустует...</div>
+    {% endif %}
+</div>
+{% endblock content %}

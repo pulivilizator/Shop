@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/cart.css' %}">
     <link rel="stylesheet" href="{% static 'css/product_detail_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdBMG4oAAAAAL6Jy5eyoUXt0pD0TIxRjaeznePK"></script>
     <title>{% block title %}{{ title }}{% endblock title %}</title>
 </head>
 <body>
@@ -61,9 +63,13 @@
                         </div>
 
                         <div class="header__user">
-                            <a href="#" class="header__user_icon"><i class="fa-regular fa-user fa-2xl"></i></a>
+                            {% if not auth %}
+                            <a href="{% url 'user:login' %}" class="header__user_icon"><i class="fa-regular fa-user fa-2xl"></i></a>
+                            {% else %}
+                            <a href="{% url 'user:profile' %}" class="header__user_icon"><i class="fa-regular fa-user fa-2xl"></i></a>
+                            {% endif %}
                             <a href="#" class="header__user_icon"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></a>
-                            <a href="#" class="header__user_icon"><i class="fa-regular fa-heart fa-2xl"></i></a>
+                            <a href="{% url 'likes:likes' %}" class="header__user_icon"><i class="fa-regular fa-heart fa-2xl"></i></a>
                             <a href="{% url 'cart:cart' %}" class="header__user_icon"><i class="fa-solid fa-cart-arrow-down fa-2xl"></i></a>
                         </div>
                     </div>
@@ -109,18 +115,7 @@
                                 <li class="about__site"><a href="">Статьи</a></li>
                             </ul>
                         </div>
-                        <div class="footer__content_catalog">
-                            <h3>Каталог</h3>
-                            <ul class="catalog__menu">
-                                <li class="catalog__site"><a href="">Противоударные чехлы</a></li>
-                                <li class="catalog__site"><a href="">Голографические чехлы</a></li>
-                                <li class="catalog__site"><a href="">Жидкие чехлы с блестками</a></li>
-                                <li class="catalog__site"><a href="">Чехлы книжки</a></li>
-                                <li class="catalog__site"><a href="">Деревянные чехлы</a></li>
-                                <li class="catalog__site"><a href="">Силиконовые чехлы</a></li>
-                                <li class="catalog__site"><a href="">Пластиковые чехлы</a></li>
-                            </ul>
-                        </div>
+                        {% show_categories_footer %}
                         <div class="footer__content_connect">
                             <h3>Свяжитесь с нами</h3>
                             <ul class="connect__menu">
@@ -132,7 +127,7 @@
                         <div class="footer__content_info">
                             <h3>© 2023 Кейс эксклюзив</h3>
                             <div class="confidentiality">
-                                <a href="http://">Политика конфиденциальности</a> / <a href="http://">Согласие на обработку персональных данных</a>
+                                <a href="{% url 'user:download' %}?politic=1">Политика конфиденциальности</a> / <a href="{% url 'user:download' %}?agree=1">Согласие на обработку персональных данных</a>
                             </div>
                             <p>Используя данный сайт, вы автоматически принимаете условия пользовательского соглашения и соглашаетесь с политикой конфиденциальности.</p>
                             <p>Указанные на сайте цены не являются публичной офертой и могут быть изменены в любое время.</p>
@@ -148,6 +143,8 @@
     <script src="{% static 'js/filter.js' %}"></script>
     <script src="{% static 'js/detail.js' %}"></script>
     <script src="{% static 'js/cart.js' %}"></script>
+    <script src="{% static 'js/likes.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
     <script src="https://kit.fontawesome.com/18a5f50620.js" crossorigin="anonymous"></script>
 </body>
 </html>

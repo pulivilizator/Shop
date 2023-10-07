@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__login_name"><a href="{% url 'shop:home' %}">Главная</a> / Восстановления пароля</div>
+    <div class="login__container" style="justify-content: center">
+        <div class="login__info">
+            <div class="info__conteiner">
+                <div class="info__title">Электронное письмо было отправлено на почту.</div>
+                <div class="info__text">Для восстановления пароля следуйте инструкциям, указанным в электронном письме.</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

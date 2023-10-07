@@ -1,6 +1,7 @@
 from django import template
 
 from ..models import Category
+from .. import utils
 
 register = template.Library()
 
@@ -8,4 +9,10 @@ register = template.Library()
 @register.inclusion_tag('shop_app/includes/categories.html')
 def show_categories():
     categories = Category.objects.filter(category=None).order_by().prefetch_related('subcategories')
+    return {'categories': categories}
+
+
+@register.inclusion_tag('shop_app/includes/categories_footer.html')
+def show_categories_footer():
+    categories = utils.get_populated_cats(7)
     return {'categories': categories}

@@ -2,11 +2,10 @@ from django.db.models import When, Case
 from django.conf import settings
 
 from . import models
-from apps.cart.cart import Cart
 
 import json
 import redis
-
+import requests
 
 CATEGORY_REDIS_KEY = 'category:views'
 PRODUCT_REDIS_KEY = 'product:views'
@@ -70,3 +69,14 @@ def get_populated_products(category, limit=5):
     if len(products) < limit: limit = len(products)
     products_ids = map(lambda x: x[0], sorted(products.items(), key=lambda x: x[1], reverse=True)[:limit])
     return category.products.filter(id__in=products_ids)
+
+
+def recaptcha_check(request):
+    data = {
+        'response': request.POST.get('g-recaptcha-response'),
+        'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY
+    }
+    resp = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+    resp_json = resp.json()
+    print(resp_json)
+    return True if resp_json['score'] > 0.5 and resp_json['success'] == True else False

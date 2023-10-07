@@ -18,7 +18,18 @@
       font-size: 45px;
       font-weight: bold;
     }
-    .clear {
+    .clear_cart {
+      width: 220px;
+      font-size: 20px;
+      background-color: inherit;
+      border-bottom: 1px solid black;
+      margin-bottom: 60px;
+      &:hover {
+        color: orange;
+        border-bottom: 1px solid orange;
+      }
+    }
+    .clear_likes {
       width: 220px;
       font-size: 20px;
       background-color: inherit;

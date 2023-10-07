@@ -63,7 +63,7 @@ $(document).ready(function() {
             url: '/add_to_cart/' + productId + '/',
             type: 'GET',
             success: function(response) {
-                $(`#quantity${productId}`).text(`${response.new_quantity} руб.`);
+                $(`#quantity${productId}`).text(response.new_quantity);
                 $(`#totalPrice${productId}`).text(`${response.total_price} руб.`);
                 $('#cart__total_price').text(`Итоговая сумма: ${response.cart_total_price} руб.`);
             }
@@ -79,7 +79,7 @@ $(document).ready(function() {
             type: 'GET',
             success: function(response) {
                 $(`#quantity${productId}`).text(response.new_quantity);
-                $(`#totalPrice${productId}`).text(response.total_price);
+                $(`#totalPrice${productId}`).text(`${response.total_price} руб.`);
                 $('#cart__total_price').text(`Итоговая сумма: ${response.cart_total_price} руб.`);
             }
         });

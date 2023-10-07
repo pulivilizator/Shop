@@ -23,8 +23,8 @@ def remove_from_cart(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(shop_app_models.Product, id=product_id)
     cart.remove(product)
-
-    return JsonResponse({'success': True})
+    return JsonResponse({'success': True,
+                         'cart_total_price': cart.get_total_price()})
 
 def delete_from_cart(request, product_id, quantity=1):
     """Вычитает указанное количество товара"""

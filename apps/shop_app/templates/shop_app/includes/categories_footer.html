@@ -1,0 +1,8 @@
+<div class="footer__content_catalog">
+    <h3>Каталог</h3>
+    <ul class="catalog__menu">
+        {% for cat in categories %}
+        <li class="catalog__site"><a href="{{ cat.category.get_absolute_url }}{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

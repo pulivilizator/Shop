@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__login_name"><a href="{% url 'shop:home' %}">Главная</a> / Восстановление пароля</div>
+    <div class="login__container">
+        <div class="login__form">
+            <div class="login__title">Восстановление пароля</div>
+            <form action="#" method="post">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <div class="form-error">{{ f.non_field_errors }}</div>
+                    {{ f }}
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+                <div class="login__buttons">
+                    <button type="submit" class="signin">Сменить пароль</button>
+                </div>
+            </form>
+        </div>
+        <div class="login__info">
+            <div class="info__conteiner">
+                <div class="info__title">Восстановление пароля</div>
+                <div class="info__text">Используйте достаточно сложный пароль, чтобы злоумышленники не смогли украсть его.</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

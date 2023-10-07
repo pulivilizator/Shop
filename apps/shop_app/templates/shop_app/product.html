@@ -17,7 +17,11 @@
                         <div class="detail__product_notavailable">Нет в наличии</div>
                         {% endif %}
                         <div class="detail__product_id">ID товара: {{ product.id }}</div>
-                        <div class="detail__product_like"><i class="fa-regular fa-heart fa-lg"></i> В избранное</div>
+                        {% if product.id|slugify not in likes.likes.keys %}
+                        <div class="add_to_likes detail__product_like" data-product-id={{ product.id }}><i class="fa-regular fa-heart fa-lg"></i> В избранное</div>
+                        {% else %}
+                        <div class="in_likes detail__product_like" data-product-id={{ product.id }}><i class="fa-solid fa-heart fa-lg" style="color: #f50505;"></i> В избранном</div>
+                        {% endif %}
                     </div>
                     <div class="detail__product_price">{{ product.price }} руб.</div>
                     <div class="detail_product_description">
@@ -25,7 +29,7 @@
                         <div class="description">{{ product.description }}</div>
                     </div>
                     <div class="detail__product_buy">
-                        {% if product.id not in cart.cart.keys %}
+                        {% if product.id|slugify not in cart.cart.keys %}
                         <button class="add_to_cart buy__addcart" data-product-id={{ product.id }}><i class="fa-solid fa-cart-shopping fa-lg"></i> В корзину</button>
                         {% else %}
                         <button class="in-cart buy__addcart" data-product-id={{ product.id }}><i class="fa-solid fa-check fa-2xl"></i> Товар в корзине</button>

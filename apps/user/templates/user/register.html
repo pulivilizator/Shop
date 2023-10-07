@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__login_name"><a href="{% url 'shop:home' %}">Главная</a> / Регистрация</div>
+    <div class="login__container">
+        <div class="login__form">
+            <div class="login__title">Регистрация</div>
+            <form action="{% url 'user:register' %}" method="post" id="register_form">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <div class="form-error">{{ f.non_field_errors }}</div>
+                    {{ f }}
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+                <input type="hidden" name="g-recaptcha-response" id='recaptcha'>
+                <div class="login__buttons">
+                    <button type="submit" class="register_button">Зарегистрироваться</button>
+                </div>
+                <div class="pers__data"><input type="checkbox" name="politics">Согласен(на) на обработку <a href="#">персональных данных</a></div>
+                <div class="form-error">{{ form.error_messages.politics }}</div>
+            </form>
+        </div>
+        <div class="login__info">
+            <div class="info__conteiner">
+                <div class="info__title">Зачем нужна регистрация?</div>
+                <div class="info__text">Зарегистрировавшись на сайте, Вы сможете получить личный кабинет, что позволит Вам отслеживать историю заказов, быстрее оформлять заказы в нашем Интернет магазине. Вся информация о Вас будет доступна в любое время, и ее не нужно будет вводить повторно.</div>
+            </div>
+        </div>
+    </div>
+</div>
+ <script>
+ grecaptcha.ready(function() {
+  // 4
+  $('#register_form').submit(function(e){
+      var form = this;
+      // 5
+      e.preventDefault()
+      grecaptcha.execute('{{ recaptcha_site_key }}', {action: 'register_form'}).then(function(token) {
+          // 6
+          $('#recaptcha').val(token)
+          // 7
+          form.submit()
+      });
+  })
+
+});
+ </script>
+{% endblock %}

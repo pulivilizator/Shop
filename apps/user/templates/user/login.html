@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__login_name"><a href="{% url 'shop:home' %}">Главная</a> / Вход</div>
+    <div class="login__container">
+        <div class="login__form">
+            <div class="login__title">Вход</div>
+            <form action="{% url 'user:login' %}" method="post">
+                {% csrf_token %}
+                {% for f in form %}
+                    {{ f }}
+                {% endfor %}
+                <div class="login__buttons">
+                    <button type="submit" class="signin">Войти</button>
+                    <a href="{% url 'user:reset_passwd' %}" class="reset__passwd">Забыли пароль?</a>
+                </div>
+            </form>
+        </div>
+        <div class="login__info">
+            <div class="info__conteiner">
+                <div class="info__title">Я - новый покупатель</div>
+                <div class="info__text">Регистрация на сайте позволит быстро оформлять заказы, управлять заказами через личный кабинет, в полном объеме использовать возможности нашего интернет магазина.</div>
+                <a href="{% url 'user:register' %}" class="register">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

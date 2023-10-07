@@ -1,0 +1,4 @@
+
+Был запрошен сброс пароля для адреса: {{ email }}.
+Для сброса перейдите по этой ссылке: {{ protocol }}://{{ domain }}{% url 'user:password_reset_confirm' uidb64=uid token=token %}
+С уважением, {{ user.get_username }}

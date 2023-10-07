@@ -20,14 +20,25 @@
   font-size: 45px;
   font-weight: bold;
 }
-.content__cart_container .cart__title .clear {
+.content__cart_container .cart__title .clear_cart {
   width: 220px;
   font-size: 20px;
   background-color: inherit;
   border-bottom: 1px solid black;
   margin-bottom: 60px;
 }
-.content__cart_container .cart__title .clear:hover {
+.content__cart_container .cart__title .clear_cart:hover {
+  color: orange;
+  border-bottom: 1px solid orange;
+}
+.content__cart_container .cart__title .clear_likes {
+  width: 220px;
+  font-size: 20px;
+  background-color: inherit;
+  border-bottom: 1px solid black;
+  margin-bottom: 60px;
+}
+.content__cart_container .cart__title .clear_likes:hover {
   color: orange;
   border-bottom: 1px solid orange;
 }

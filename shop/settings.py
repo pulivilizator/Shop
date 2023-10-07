@@ -46,8 +46,10 @@ INSTALLED_APPS = [
 
     'apps.shop_app.apps.ShopAppConfig',
     'apps.cart.apps.CartConfig',
+    'apps.user.apps.UserConfig',
+    'apps.likes.apps.LikesConfig',
+    'apps.orders.apps.OrdersConfig',
 
-    'django_json_widget',
     'debug_toolbar',
 ]
 
@@ -77,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.cart.context_processors.cart',
+                'apps.likes.context_processors.likes',
             ],
         },
     },
@@ -152,9 +155,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+LOGIN_URL = 'user:login'
+LOGOUT_REDIRECT_URL = 'user:logout'
+
 REDIS_HOST = CONFIG.redis.host
 REDIS_PORT = CONFIG.redis.port
 REDIS_DB = CONFIG.redis.db
 
 
 CART_SESSION_ID = 'cart'
+LIKES_SESSION_ID = 'likes'
+
+EMAIL_HOST = CONFIG.smtp.email_host
+EMAIL_HOST_USER = CONFIG.smtp.email_host_user
+EMAIL_HOST_PASSWORD = CONFIG.smtp.email_host_password
+EMAIL_PORT = CONFIG.smtp.email_port
+EMAIL_USE_TLS = True
+
+GOOGLE_RECAPTCHA_SECRET_KEY = CONFIG.recaptcha.secret_key
+GOOGLE_RECAPTCHA_PUBLIC_KEY = CONFIG.recaptcha.public_key

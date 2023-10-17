@@ -28,13 +28,13 @@
                         <div class="title">Описание</div>
                         <div class="description">{{ product.description }}</div>
                     </div>
-                    <div class="detail__product_buy">
+                    <div class="detail__product_buy" style="justify-content: flex-end">
                         {% if product.id|slugify not in cart.cart.keys %}
-                        <button class="add_to_cart buy__addcart" data-product-id={{ product.id }}><i class="fa-solid fa-cart-shopping fa-lg"></i> В корзину</button>
+                        <button class="add_to_cart buy__addcart" data-product-id="{{ product.id }}"><i class="fa-solid fa-cart-shopping fa-lg"></i> В корзину</button>
                         {% else %}
                         <button class="in-cart buy__addcart" data-product-id={{ product.id }}><i class="fa-solid fa-check fa-2xl"></i> Товар в корзине</button>
                         {% endif %}
-                        <button class="buy__buynow"><a href="http://"><i class="fa-solid fa-arrows-turn-right fa-rotate-180 fa-lg"></i> Купить сейчас</a></button>
+                        <button class="buy__buynow" style="display: none"><a href="http://"><i class="fa-solid fa-arrows-turn-right fa-rotate-180 fa-lg"></i> Купить сейчас</a></button>
                     </div>
                 </div>
             </div>

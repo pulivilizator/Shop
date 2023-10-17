@@ -174,3 +174,5 @@ EMAIL_USE_TLS = True
 
 GOOGLE_RECAPTCHA_SECRET_KEY = CONFIG.recaptcha.secret_key
 GOOGLE_RECAPTCHA_PUBLIC_KEY = CONFIG.recaptcha.public_key
+
+# CELERY_BROKER_URL = 'amqp://dj_user:51471348@localhost:5672/dj_host'

@@ -1,0 +1,270 @@
+.content__order_container {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 30px 0 150px 0;
+}
+.content__order_container .content__order_name {
+  color: black;
+  width: 100%;
+  font-size: 15px;
+  font-style: italic;
+  margin: 30px 0 30px 0;
+}
+.content__order_container .content__order_name a {
+  color: gray;
+}
+.content__order_container .order__title {
+  font-size: 40px;
+  font-weight: bold;
+}
+.content__order_container .order {
+  display: flex;
+  justify-content: space-between;
+}
+.content__order_container .order .order_main {
+  width: 1120px;
+}
+.content__order_container .order .order_main .ord__subtitle {
+  font-size: 15px;
+  margin: 40px 0 20px 0;
+}
+.content__order_container .order .order_main input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid rgba(128, 128, 128, 0.227);
+  padding: 0 20px;
+  font-size: 20px;
+}
+.content__order_container .order .order_main form .subtitle {
+  margin-top: 30px;
+  font-size: 25px;
+}
+.content__order_container .order .order_main form .subtitle i {
+  margin-right: 10px;
+  color: rgb(0, 0, 80);
+}
+.content__order_container .order .order_main form .delivery__payment {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0 100px 0;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container {
+  margin-top: 50px;
+  background-color: white;
+  width: 46%;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.196);
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container .delivery__subtitle {
+  font-size: 25px;
+  margin: 30px 30px 20px 30px;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container .delivery__subtitle i {
+  margin-right: 10px;
+  color: rgb(0, 0, 80);
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method {
+  font-size: 20px;
+  padding: 0 30px 50px 30px;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method div {
+  display: flex;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method div label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method div label input {
+  width: 20px;
+  margin-right: 20px;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method div label .labprice {
+  display: flex;
+  flex-direction: column;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method div label .labprice .option__label {
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+.content__order_container .order .order_main form .delivery__payment .delivery__container #id_delivery_method div label .labprice .label__price {
+  font-size: 15px;
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container {
+  margin-top: 50px;
+  background-color: white;
+  width: 46%;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.196);
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container .payment__subtitle {
+  font-size: 25px;
+  margin: 30px 30px 20px 30px;
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container .payment__subtitle i {
+  margin-right: 10px;
+  color: rgb(0, 0, 80);
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container #id_payment_method {
+  font-size: 20px;
+  padding: 0 30px 50px 30px;
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container #id_payment_method div {
+  display: flex;
+  width: 100%;
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container #id_payment_method div label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.content__order_container .order .order_main form .delivery__payment .payment__container #id_payment_method div label input {
+  width: 20px;
+  margin-right: 20px;
+}
+.content__order_container .order .order_main form .btn {
+  margin-top: 100px;
+  width: 350px;
+  height: 85px;
+}
+.content__order_container .order .order_main form .btn .order__confirm {
+  width: 100%;
+  height: 100%;
+  background-color: #21213f;
+  color: white;
+  font-size: 30px;
+  border-radius: 5px;
+}
+.content__order_container .order .order_main form .btn .order__confirm:hover {
+  background: rgba(33, 33, 63, 0.9098039216);
+}
+.content__order_container .order .order__info_menu {
+  width: 350px;
+  position: relative;
+}
+.content__order_container .order .order__info_menu .order__info_container {
+  position: sticky;
+  top: 40px;
+  width: 100%;
+  height: 520px;
+  background-color: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.196);
+  border-radius: 5px;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .text {
+  font-size: 20px;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .value {
+  font-size: 20px;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .ordifm {
+  display: flex;
+  justify-content: space-between;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .change__cart {
+  padding: 50px 30px;
+  width: 100%;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.23);
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .change__cart a {
+  color: black;
+  border-bottom: 1px solid black;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .change__cart a:hover {
+  color: rgba(0, 0, 0, 0.76);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.76);
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .oreder__product_info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 30px 0;
+  margin: 0 30px;
+  height: 45%;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.261);
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .discount {
+  margin: 0 30px;
+  padding: 30px 0;
+}
+.content__order_container .order .order__info_menu .order__info_container .oreder__info_content .total__sum {
+  font-size: 27px;
+  margin: 0 30px;
+  padding: 30px 0;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: white;
+  font-size: 18px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 20px;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  color: black;
+  border-color: black transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent black transparent;
+  top: 7px;
+}
+
+.select-items div, .select-selected {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  color: black;
+  border: 1px solid rgba(128, 128, 128, 0.227);
+}
+
+.select-items {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border: 1px solid rgba(128, 128, 128, 0.227);
+  border-top: 0px;
+}
+.select-items div {
+  border: 0;
+  height: 35px;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=order.css.map */

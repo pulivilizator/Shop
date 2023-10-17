@@ -56,8 +56,8 @@
                 </form>
             </div>
             <div class="place__order">
-                <div class="cart__total_price" id="cart__total_price">Итоговая сумма: {{ cart.get_total_price }}</div>
-                <button><a href="#">Оформить заказ</a></button>
+                <div class="cart__total_price" id="cart__total_price">Итоговая сумма: {{ cart.get_total_price }} руб.</div>
+                <button><a href="{% url 'order:create_order' %}">Оформить заказ</a></button>
             </div>
         </div>
     </div>

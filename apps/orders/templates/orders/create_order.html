@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content__container">
+    <div class="content__order_container">
+        <div class="content__order_name"><a href="#">Главная</a> / Оформление</div>
+        <div class="order__title">Оформление заказа</div>
+        <div class="order">
+            <div class="order_main">
+                <form action="{% url 'order:create_order' %}" method="post" id="createOrder">
+                    {% csrf_token %}
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    <div class="form-error">{{ f.non_field_errors }}</div>
+                    <div class="form-error">{{ f.errors }}</div>
+                    <div class="subtitle"><i class="fa-solid fa-map-location-dot fa-lg"></i> Регион доставки</div>
+                    <div class="country">
+                        <div class="cnt__title ord__subtitle">Страна *</div>
+                        <div class="custom-select">
+                            {{ form.country }}
+                        </div>
+                    </div>
+
+                    <div class="region">
+                        <div class="rgn__title ord__subtitle">Введите регион *</div>
+                        {{ form.region }}
+                    </div>
+
+                    <div class="city">
+                        <div class="city__title ord__subtitle">Введите город *</div>
+                        {{ form.city }}
+                    </div>
+
+                    <div class="postal_code">
+                        <div class="plc__title ord__subtitle">Индекс *</div>
+                        {{ form.postal_code }}
+                    </div>
+
+                    <div class="delivery__payment">
+                        <div class="delivery__container">
+                            <div class="delivery__subtitle"><i class="fa-solid fa-truck fa-lg"></i> Способ доставки</div>
+                            <div id="id_delivery_method">
+                                {{ form.delivery_method }}
+                            </div>
+                        </div>
+
+                        <div class="payment__container">
+                            <div class="payment__subtitle"><i class="fa-solid fa-hand-holding-dollar fa-lg"></i> Способ доставки</div>
+                            {{ form.payment_method }}
+                        </div>
+                    </div>
+                    <div class="subtitle"><i class="fa-solid fa-user-pen fa-lg"></i> Введите ваши данные</div>
+
+                    <div class="last_name">
+                        <div class="ln__title ord__subtitle">Введите фамилию *</div>
+                        {{ form.last_name }}
+                    </div>
+
+                    <div class="first_name">
+                        <div class="fn__title ord__subtitle">Введите имя *</div>
+                        {{ form.first_name }}
+                    </div>
+
+                    <div class="patronymic">
+                        <div class="pnmc__title ord__subtitle">Введите отчество *</div>
+                        {{ form.patronymic }}
+                    </div>
+
+                    <div class="address">
+                        <div class="address__title ord__subtitle">Введите адрес *</div>
+                        {{ form.address }}
+                    </div>
+
+                    <div class="email">
+                        <div class="email__title ord__subtitle">Введите E-mail *</div>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="btn">
+                        <button class="order__confirm" type="submit">Оформить заказ</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="order__info_menu">
+                <div class="order__info_container">
+                    <div class="oreder__info_content">
+
+                        <div class="change__cart ordifm">
+                            <div class="text">Ваш заказ</div> <div class="cart"><a href="{% url 'cart:cart' %}">Изменить</a></div>
+                        </div>
+
+                        <div class="oreder__product_info">
+                            <div class="products ordifm"><div class="text">Товаров</div><div class="value">{{ cart.count }}</div></div>
+                            <div class="sum ordifm"><div class="text">На сумму</div><div class="value">{{ cart.get_total_price }} руб.</div></div>
+                            <div class="delivery ordifm"><div class="text">Доставка</div><div class="value">0 руб.</div></div>
+                            <div class="commission ordifm"><div class="text">Комиссия</div><div class="value">0.00 руб.</div></div>
+                        </div>
+
+                        <div class="discount ordifm">
+                            <div class="text">Скидка</div><div class="value">0.00 руб.</div>
+                        </div>
+
+
+                        <div class="total__sum ordifm">
+                            <div class="total__text">Итого</div><div class="total__value">{{ cart.get_total_price }} руб.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

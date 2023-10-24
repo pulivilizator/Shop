@@ -31,7 +31,7 @@ def delete_from_cart(request, product_id, quantity=1):
     cart = Cart(request)
     product = get_object_or_404(shop_app_models.Product, id=product_id)
     cart.delete(product, quantity=quantity)
-    if cart.cart[str(product_id)] < 1: remove_from_cart(request, product_id)
+    if len(cart.cart[str(product_id)]) < 1: remove_from_cart(request, product_id)
     return JsonResponse({'success': True,
                          'new_quantity': cart.cart[str(product_id)]['quantity'],
                          'total_price': cart.get_product_price(product_id),

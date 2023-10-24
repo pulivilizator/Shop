@@ -88,8 +88,7 @@ class SubcategoryPage(utils.DataMixin, generic.ListView):
                                                      Q(available=True)).order_by(self.sorted_field))
 
     def get_properties(self, queryset):
-        return {p_type: [p_val for p_val in models.PropertyValue.objects.filter(
-                Q(properties__type=p_type) & Q(properties__product__in=queryset))]
+        return {p_type: [p_val for p_val in models.PropertyValue.objects.filter(Q(properties__type=p_type) & Q(properties__product__in=self.subcategory.products.all()))]
                 for p_type in models.PropertyType.objects.filter(subcategory_field=True)}
 
 

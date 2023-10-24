@@ -19,7 +19,6 @@ import redis
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'apps.user.apps.UserConfig',
     'apps.likes.apps.LikesConfig',
     'apps.orders.apps.OrdersConfig',
+    'apps.payment.apps.PaymentConfig',
 
     'debug_toolbar',
 ]
@@ -87,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shop.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -101,7 +100,6 @@ DATABASES = {
         'PORT': CONFIG.db.port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -138,7 +136,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -162,7 +159,6 @@ REDIS_HOST = CONFIG.redis.host
 REDIS_PORT = CONFIG.redis.port
 REDIS_DB = CONFIG.redis.db
 
-
 CART_SESSION_ID = 'cart'
 LIKES_SESSION_ID = 'likes'
 
@@ -175,4 +171,8 @@ EMAIL_USE_TLS = True
 GOOGLE_RECAPTCHA_SECRET_KEY = CONFIG.recaptcha.secret_key
 GOOGLE_RECAPTCHA_PUBLIC_KEY = CONFIG.recaptcha.public_key
 
-# CELERY_BROKER_URL = 'amqp://dj_user:51471348@localhost:5672/dj_host'
+CELERY_BROKER_URL = f'amqp://{CONFIG.celery.rabbitmq_user}:{CONFIG.celery.rabbitmq_password}@{CONFIG.celery.host}:{CONFIG.celery.port}/{CONFIG.celery.rabbitmq_vhost}'
+
+STRIPE_SECRET_KEY = CONFIG.stripe.secret_key
+STRIPE_PUBLIC_KEY = CONFIG.stripe.pub_key
+STRIPE_WEBHOOK_SECRET = CONFIG.stripe.webhook_secret

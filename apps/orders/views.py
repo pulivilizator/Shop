@@ -3,8 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from . import forms, models
-from .tasks import order_created
+from . import forms, models, tasks
 from apps.shop_app import utils
 from apps.cart.cart import Cart
 
@@ -12,10 +11,10 @@ from apps.cart.cart import Cart
 class CreateOrderView(utils.DataMixin, generic.CreateView):
     form_class = forms.OrderCreateForm
     template_name = 'orders/create_order.html'
-    success_url = reverse_lazy('user:profile')
+    success_url = reverse_lazy('payment:process')
 
     def get_success_url(self):
-        return reverse_lazy('user:profile')
+        return reverse_lazy('payment:process')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,7 +32,8 @@ class CreateOrderView(utils.DataMixin, generic.CreateView):
                                             product=item['product'],
                                             quantity=item['quantity'],
                                             price=item['price'])
-        order_created.delay(self.object.id)
+        tasks.order_created.delay(self.object.id)
+        self.request.session['order_id'] = self.object.id
         cart.clear()
-        return redirect('user:profile')
+        return redirect('payment:process')
 

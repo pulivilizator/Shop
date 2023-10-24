@@ -186,6 +186,15 @@
           background-color: rgb(234, 152, 1);
         }
       }
+      .subm {
+        width: 400px;
+        height: 65px;
+        background-color: orange;
+        color: white;
+        font-size: 20px;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
@@ -195,4 +204,11 @@
   color: gray;
   align-self: center;
   margin-bottom: 150px;
+}
+
+.order__success {
+  font-size: 40px;
+  color: black;
+  align-self: center;
+  margin: 100px 0;
 }

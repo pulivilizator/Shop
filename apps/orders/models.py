@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -52,6 +53,7 @@ class Order(models.Model):
     postal_code = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    stripe_id = models.CharField(max_length=250, blank=True)
     paid = models.BooleanField(default=False)
 
     class Meta:
@@ -68,6 +70,17 @@ class Order(models.Model):
         if self.delivery_method.price:
             return total_price + self.delivery_method.price
         return total_price
+
+    def get_stripe_url(self):
+        if not self.stripe_id:
+            return ''
+
+        if '_test_' in settings.STRIPE_SECRET_KEY:
+            path = '/test/'
+
+        else:
+            path = '/'
+        return f'https://dashboard.stripe.com{path}payments/{self.stripe_id}'
 
 
 class OrderItem(models.Model):

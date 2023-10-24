@@ -15,10 +15,12 @@ def order_stripe_payment(obj):
         html = f'<a href="{url}" target="_blank">{obj.stripe_id}</a>'
         return mark_safe(html)
     return ''
-
-
 order_stripe_payment.short_description = 'Stripe payment'
 
+def order_details(obj):
+    url = obj.get_absolute_url()
+    return mark_safe(f'<a href="{url}" target="_blank">Details from order №{obj.id}</a>')
+order_details.short_description = 'Order details'
 
 class OrderItemInline(admin.TabularInline):
     model = models.OrderItem
@@ -45,7 +47,7 @@ export_to_csv.short_description = 'Export to CSV'
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name', 'email', 'country',
                     'region', 'city', 'address', 'postal_code', 'paid',
-                    order_stripe_payment, 'created', 'updated')
+                    order_stripe_payment, order_details, 'created', 'updated')
     list_filter = ('country', 'created', 'updated', 'paid')
     inlines = [OrderItemInline]
     actions = [export_to_csv]

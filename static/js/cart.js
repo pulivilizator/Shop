@@ -98,7 +98,7 @@ $(document).ready(function() {
         });
     });
 
-        $('.clear').click(function() {
+    $('.clear_cart').click(function() {
 
         $.ajax({
             url: '/clear_cart/',

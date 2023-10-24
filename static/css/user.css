@@ -187,7 +187,67 @@
 }
 .profile__container .profile__orders {
   display: none;
+  width: 100%;
   background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.334);
+}
+.profile__container .profile__orders .content__orders_container {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 50px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list {
+  max-height: 1000px;
+  overflow: auto;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list::-webkit-scrollbar {
+  background-color: inherit;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.367);
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.267);
+  margin-bottom: 30px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container {
+  width: 100%;
+  justify-content: space-between;
+  margin: 30px 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__info {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  height: 30%;
+  font-size: 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__info a {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products {
+  width: 1200px;
+  display: flex;
+  overflow: auto;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products::-webkit-scrollbar {
+  background-color: inherit;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.367);
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products a {
+  padding: 0 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products a img {
+  width: 100px;
 }
 .profile__container .profile__orders.active {
   display: block;

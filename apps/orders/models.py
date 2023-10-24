@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 from apps.shop_app.models import Product
 
@@ -39,7 +40,7 @@ class PaymentMethod(models.Model):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='orders')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     patronymic = models.CharField(max_length=50)
@@ -81,6 +82,12 @@ class Order(models.Model):
         else:
             path = '/'
         return f'https://dashboard.stripe.com{path}payments/{self.stripe_id}'
+
+    def get_absolute_url(self):
+        username = 'anonymous'
+        if self.user:
+            username = self.user.username
+        return reverse('order:detail_order', kwargs={'order_id': self.id, 'username': username})
 
 
 class OrderItem(models.Model):

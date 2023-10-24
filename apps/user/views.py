@@ -107,7 +107,9 @@ class ProfileView(utils.DataMixin, generic.TemplateView):
         context = super().get_context_data(**kwargs)
         user = self.request.user
         products = models.Product.objects.all()
-        up_context = self.get_user_context(title='Личный кабинет', user=user, products=products)
+        orders = user.orders.all().prefetch_related('items')
+        up_context = self.get_user_context(title='Личный кабинет', user=user,
+                                           products=products, orders=orders)
         context.update(up_context)
         return context
 

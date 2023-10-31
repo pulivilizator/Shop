@@ -48,7 +48,8 @@ class CartView(utils.DataMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        if 'coupon_id' in self.request.session:
+            del self.request.session['coupon_id']
         up_context = self.get_user_context(title='Корзина')
         context.update(up_context)
 

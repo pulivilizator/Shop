@@ -3,6 +3,7 @@ from django.views import generic
 
 from . import utils
 from . import models
+from .recommender import Recommender
 
 from decimal import Decimal as D
 
@@ -105,8 +106,12 @@ class ProductPage(utils.DataMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         cat = models.Category.objects.filter(slug=self.object.subcategory.slug).select_related('category')[0]
         properties = self.get_properties(category=cat, product=self.object)
+        r = Recommender()
+        recommended_products = r.suggest_products_for([self.object])
+        populated_products = utils.get_populated_products(cat, limit=6)
         up_context = self.get_user_context(title=self.object.name, product=self.object,
-                                           subcat=cat, properties=properties)
+                                           subcat=cat, properties=properties, recommended_products=recommended_products,
+                                           populated_products=populated_products)
         context.update(up_context)
         return context
 

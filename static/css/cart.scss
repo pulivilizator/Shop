@@ -144,29 +144,37 @@
     justify-content: space-between;
     margin-bottom: 150px;
     .promo {
-      form {
-        input {
-          width: 480px;
-          height: 55px;
-          padding: 15px;
-          border: 1px solid rgba(128, 128, 128, 0.385);
-          font-size: 17px;
+      input {
+        width: 480px;
+        height: 55px;
+        padding: 15px;
+        border: 1px solid rgba(128, 128, 128, 0.385);
+        font-size: 17px;
+      }
+      button {
+        width: 330px;
+        height: 55px;
+        background-color: #21213f;
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+        &:hover {
+          background-color: #21213fe9;
         }
-        button {
-          width: 330px;
-          height: 55px;
-          background-color: #21213f;
-          color: #fff;
-          font-weight: bold;
-          font-size: 20px;
-          &:hover {
-            background-color: #21213fe9;
-          }
-        }
+      }
+      #couponNotExists {
+        display: none;
+        font-size: 20px;
+        color: red;
+        padding: 40px 0 0 0;
       }
     }
     .place__order {
       .cart__total_price {
+        font-size: 25px;
+        margin-bottom: 25px;
+      }
+      #cart__discount {
         font-size: 25px;
         margin-bottom: 25px;
       }

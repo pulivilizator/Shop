@@ -1,16 +1,12 @@
-from django.conf import settings
-from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views import generic
 
 from . import forms, models, tasks
 from apps.shop_app import utils
 from apps.cart.cart import Cart
-
-import weasyprint
+from apps.shop_app.recommender import Recommender
 
 
 class CreateOrderView(utils.DataMixin, generic.CreateView):
@@ -31,7 +27,11 @@ class CreateOrderView(utils.DataMixin, generic.CreateView):
         cart = Cart(self.request)
         if self.request.user.is_authenticated:
             form.instance.user = self.request.user
+        form.instance.coupon = cart.coupon
+        form.instance.discount = cart.coupon.discount
         super().form_valid(form)
+        r = Recommender()
+        r.products_bought(item['product'] for item in cart)
         for item in cart:
             models.OrderItem.objects.create(order=self.object,
                                             product=item['product'],
@@ -62,16 +62,3 @@ class DetailOrderView(utils.DataMixin, generic.DetailView):
 
         raise Http404
 
-@staff_member_required
-def order_pdf(request, order_id):
-    order = get_object_or_404(models.Order, pk=order_id)
-    html = render_to_string('orders/pdf.html', {'order': order})
-
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = f'filename=order_{order_id}.pdf'
-
-    weasyprint.HTML(string=html).write_pdf(response,
-                                           stylesheets=[weasyprint.CSS(
-                                               settings.STATIC_ROOT / 'css/pdf.css'
-                                           )])
-    return response

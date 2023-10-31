@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.likes.apps.LikesConfig',
     'apps.orders.apps.OrdersConfig',
     'apps.payment.apps.PaymentConfig',
+    'apps.coupons.apps.CouponsConfig',
 
     'debug_toolbar',
 ]
@@ -148,8 +149,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

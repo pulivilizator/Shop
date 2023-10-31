@@ -136,14 +136,14 @@
   justify-content: space-between;
   margin-bottom: 150px;
 }
-.content__cart_container .cart__order .promo form input {
+.content__cart_container .cart__order .promo input {
   width: 480px;
   height: 55px;
   padding: 15px;
   border: 1px solid rgba(128, 128, 128, 0.385);
   font-size: 17px;
 }
-.content__cart_container .cart__order .promo form button {
+.content__cart_container .cart__order .promo button {
   width: 330px;
   height: 55px;
   background-color: #21213f;
@@ -151,10 +151,20 @@
   font-weight: bold;
   font-size: 20px;
 }
-.content__cart_container .cart__order .promo form button:hover {
+.content__cart_container .cart__order .promo button:hover {
   background-color: rgba(33, 33, 63, 0.9137254902);
 }
+.content__cart_container .cart__order .promo #couponNotExists {
+  display: none;
+  font-size: 20px;
+  color: red;
+  padding: 40px 0 0 0;
+}
 .content__cart_container .cart__order .place__order .cart__total_price {
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+.content__cart_container .cart__order .place__order #cart__discount {
   font-size: 25px;
   margin-bottom: 25px;
 }

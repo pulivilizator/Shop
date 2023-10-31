@@ -37,7 +37,25 @@ def payment_process(request):
                 },
                 'quantity': item.quantity,
             })
+        if isinstance(order.delivery_method.price, (int, float, D)):
+            session_data['line_items'].append({
+                'price_data': {
+                    'unit_amount': int(order.delivery_method.price * D('100')),
+                    'currency': 'rub',
+                    'product_data': {
+                        'name': order.delivery_method.name
+                    },
+                },
+                'quantity': 1,
+            })
 
+        if order.coupon:
+            stripe_coupon = stripe.Coupon.create(
+                name=order.coupon.code,
+                percent_off=order.discount,
+                duration='once'
+            )
+            session_data['discounts'] = [{'coupon': stripe_coupon.id}]
         session = stripe.checkout.Session.create(**session_data)
 
         return redirect(session.url, code=303)

@@ -50,13 +50,13 @@
         </div>
         <div class="cart__order">
             <div class="promo">
-                <form action="#" method="POST" id="promo">
-                    <input type="text" name="promo" placeholder="Введите промокод...">
-                    <button type="submit">Применить</button>
-                </form>
+                <input type="text" name="coupon" placeholder="Введите промокод..." id="coupon">
+                <button type="submit" id="couponBTN">Применить</button>
+                <div id="couponNotExists">Промокод не найден</div>
             </div>
             <div class="place__order">
                 <div class="cart__total_price" id="cart__total_price">Итоговая сумма: {{ cart.get_total_price }} руб.</div>
+                <div id="cart__discount">Ваша скидка: {{ cart.get_discount }} руб.</div>
                 <button><a href="{% url 'order:create_order' %}">Оформить заказ</a></button>
             </div>
         </div>

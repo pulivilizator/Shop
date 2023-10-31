@@ -22,12 +22,13 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('apps.coupons.urls')),
     path('', include('apps.cart.urls')),
-    path('', include('apps.shop_app.urls')),
     path('', include('apps.user.urls')),
     path('', include('apps.likes.urls')),
     path('', include('apps.orders.urls')),
     path('', include('apps.payment.urls')),
+    path('', include('apps.shop_app.urls')),
 ]
 
 

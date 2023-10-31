@@ -68,57 +68,42 @@
 
                 <div class="product__reviews">Отзывы</div>
             </div>
+            {% if recommended_products %}
+            <div class="detail__product_recommended">
+                <div class="product__recommended_title">С этим товаром часто покупают</div>
+                <ul class="recommended__list">
+                    {% for p in recommended_products %}
+                        <li>
+                            <div class="img"><a href="{{ p.get_absolute_url }}"><img src="{{ p.imagine.url }}" alt=""><div class="hit">Хит продаж!</div></a></div>
+                            <div class="product__text">
+                                <div class="title"><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></div>
+                                <div class="description">{{ p.description|truncatewords:"10" }}</div>
+                                <div class="price">{{ p.price }} руб.</div>
+                                <div class="more"><button><a href="{{ p.get_absolute_url }}">Подробнее</a></button></div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
 
             <div class="detail__product_recommended">
                 <div class="product__recommended_title">Рекомендуем посмотреть</div>
                 <ul class="recommended__list">
-                    <li>
-                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                        <div class="product__text">
-                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                            <div class="price">700.00 руб.</div>
-                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                        <div class="product__text">
-                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                            <div class="price">700.00 руб.</div>
-                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                        <div class="product__text">
-                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                            <div class="price">700.00 руб.</div>
-                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                        <div class="product__text">
-                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                            <div class="price">700.00 руб.</div>
-                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img"><a href="http://"><img src="time/1db1b2f57db5a86a13f75eb235c2178cc6ec0d08808a58952056d376d2fc12d2.jpg" alt=""><div class="hit">Хит продаж!</div></a></div>
-                        <div class="product__text">
-                            <div class="title"><a href="http://">Lorem ipsum dolor sit amet consectetur adipisicing.</a></div>
-                            <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, delectus.</div>
-                            <div class="price">700.00 руб.</div>
-                            <div class="more"><button><a href="http://">Подробнее</a></button></div>
-                        </div>
-                    </li>
+                    {% for p in populated_products %}
+                        <li>
+                            <div class="img"><a href="{{ p.get_absolute_url }}"><img src="{{ p.imagine.url }}" alt=""><div class="hit">Хит продаж!</div></a></div>
+                            <div class="product__text">
+                                <div class="title"><a href="{{ p.get_absolute_url }}">{{ p.name }}</a></div>
+                                <div class="description">{{ p.description|truncatewords:"10" }}</div>
+                                <div class="price">{{ p.price }} руб.</div>
+                                <div class="more"><button><a href="{{ p.get_absolute_url }}">Подробнее</a></button></div>
+                            </div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
+
         </div>
     </div>
 </div>

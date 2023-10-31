@@ -97,12 +97,12 @@
                         </div>
 
                         <div class="discount ordifm">
-                            <div class="text">Скидка</div><div class="value">0.00 руб.</div>
+                            <div class="text">Скидка</div><div class="value">{{ cart.get_discount }} руб.</div>
                         </div>
 
 
                         <div class="total__sum ordifm">
-                            <div class="total__text">Итого</div><div class="total__value">{{ cart.get_total_price }} руб.</div>
+                            <div class="total__text">Итого</div><div class="total__value">{{ cart.get_discount_total_price }} руб.</div>
                         </div>
                     </div>
                 </div>

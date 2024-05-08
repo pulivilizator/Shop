@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "shop"
+version = "0.1.0"
+description = ""
+authors = ["dmitriy <dimaddf21@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.3"
+pillow = "^10.3.0"
+environs = "^11.0.0"
+redis = "^5.0.4"
+requests = "^2.31.0"
+django-debug-toolbar = "^4.3.0"
+django = "^5.0.5"
+celery = "^5.4.0"
+psycopg = {extras = ["binary"], version = "^3.1.18"}
+stripe = "^9.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

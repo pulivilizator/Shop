@@ -1,0 +1,340 @@
+.content__login_name {
+  color: black;
+  width: 100%;
+  font-size: 15px;
+  font-style: italic;
+  margin: 30px 0 30px 0;
+}
+.content__login_name a {
+  color: gray;
+}
+
+.login__container {
+  display: flex;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 100px;
+}
+.login__container .login__form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.login__container .login__form .login__title {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.login__container .login__form input {
+  background: inherit;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.331);
+  width: 600px;
+  height: 50px;
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+.login__container .login__form .login__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.login__container .login__form .login__buttons .signin {
+  color: white;
+  background-color: #21213f;
+  border: 1px solid #21213f;
+  width: 140px;
+  height: 53px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+.login__container .login__form .login__buttons .signin:hover {
+  background-color: inherit;
+  color: #21213f;
+}
+.login__container .login__form .login__buttons .register_button {
+  color: white;
+  background-color: #21213f;
+  border: 1px solid #21213f;
+  width: 240px;
+  height: 53px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+.login__container .login__form .login__buttons .register_button:hover {
+  background-color: inherit;
+  color: #21213f;
+}
+.login__container .login__form .login__buttons .reset__passwd {
+  height: 20px;
+  align-self: center;
+  color: black;
+  font-size: 17px;
+  border-bottom: 1px solid black;
+}
+.login__container .login__form .login__buttons .reset__passwd:hover {
+  color: gray;
+  border-bottom: 1px solid gray;
+}
+.login__container .login__form .pers__data {
+  display: flex;
+  align-items: center;
+}
+.login__container .login__form .pers__data input {
+  width: fit-content;
+  margin: 0 10px 0 0;
+}
+.login__container .login__form .pers__data a {
+  margin: 0 0 0 5px;
+  color: black;
+  border-bottom: 1px black solid;
+}
+.login__container .login__form .pers__data a:hover {
+  color: gray;
+  border-bottom: 1px solid gray;
+}
+.login__container .login__info .info__conteiner {
+  padding: 60px;
+  background-color: white;
+  width: 830px;
+  border: 1px solid rgba(128, 128, 128, 0.146);
+  border-radius: 20px;
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(115, 115, 116, 0.34) inset;
+  -moz-box-shadow: 5px 5px 5px -5px rgba(115, 115, 116, 0.34) inset;
+  box-shadow: 5px 5px 5px -5px rgba(115, 115, 116, 0.34) inset;
+}
+.login__container .login__info .info__conteiner .info__title {
+  font-size: 35px;
+  font-family: "Times New Roman", Times, serif;
+}
+.login__container .login__info .info__conteiner .info__text {
+  margin: 30px 0;
+  font-size: 25px;
+}
+.login__container .login__info .info__conteiner .register {
+  height: 20px;
+  align-self: center;
+  color: black;
+  font-size: 17px;
+  border-bottom: 1px solid black;
+}
+.login__container .login__info .info__conteiner .register:hover {
+  color: gray;
+  border-bottom: 1px solid gray;
+}
+
+.form-error {
+  color: gray;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.profile__username_logout {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.241);
+  padding: 50px 0 20px 0;
+  margin-bottom: 50px;
+}
+.profile__username_logout .username {
+  font-size: 35px;
+  font-weight: bold;
+  margin-right: 35px;
+}
+.profile__username_logout .regiser__date {
+  color: gray;
+  font-size: 20px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  margin-right: 60px;
+}
+.profile__username_logout .logout {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 50px;
+}
+.profile__username_logout .logout button {
+  color: black;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  background-color: inherit;
+}
+.profile__username_logout .logout button:hover {
+  color: gray;
+  border-bottom: 1px solid gray;
+}
+
+.profile__container {
+  display: flex;
+  margin-bottom: 100px;
+}
+.profile__container .buttons__conteiner .profile__buttons {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: #fff;
+  margin-right: 50px;
+  border: 1px solid rgba(128, 128, 128, 0.334);
+}
+.profile__container .buttons__conteiner .profile__buttons button {
+  height: 40px;
+  background-color: #fff;
+  font-size: 20px;
+  width: 100%;
+}
+.profile__container .buttons__conteiner .profile__buttons button.active {
+  border-left: 2px solid orange;
+}
+.profile__container .profile__orders {
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.334);
+}
+.profile__container .profile__orders .content__orders_container {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 50px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list {
+  max-height: 1000px;
+  overflow: auto;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list::-webkit-scrollbar {
+  background-color: inherit;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.367);
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.267);
+  margin-bottom: 30px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container {
+  width: 100%;
+  justify-content: space-between;
+  margin: 30px 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__info {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  height: 30%;
+  font-size: 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__info a {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products {
+  width: 1200px;
+  display: flex;
+  overflow: auto;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products::-webkit-scrollbar {
+  background-color: inherit;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.367);
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products a {
+  padding: 0 20px;
+}
+.profile__container .profile__orders .content__orders_container .orders .orders__list li .products__container .order__products a img {
+  width: 100px;
+}
+.profile__container .profile__orders.active {
+  display: block;
+}
+.profile__container .profile__likes {
+  display: none;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.334);
+}
+.profile__container .profile__likes .content__likes_container {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 50px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid rgba(128, 128, 128, 0.267);
+  margin-bottom: 30px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 30px 20px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .title {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main {
+  width: 420px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main .product__info {
+  display: inline-flex;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main .product__info img {
+  width: 70px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main .product__info .product__name {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main .product__info .product__name .name a {
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main .product__info .product__name .name a:hover {
+  color: orange;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__main .product__info .product__name .code {
+  color: gray;
+  font-style: italic;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__price {
+  width: 200px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .product__price .price {
+  padding-top: 20px;
+  font-size: 19px;
+}
+.profile__container .profile__likes .content__likes_container .likes__products .product__list li .product__container .remove button {
+  background-color: inherit;
+  color: rgb(137, 0, 0);
+}
+.profile__container .profile__likes.active {
+  display: block;
+}
+.profile__container .profile__settings {
+  display: none;
+  background-color: #fff;
+}
+.profile__container .profile__settings.active {
+  display: block;
+}
+
+.likes__blank {
+  font-size: 40px;
+  color: gray;
+  align-self: center;
+}
+
+/*# sourceMappingURL=user.css.map */

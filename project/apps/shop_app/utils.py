@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db.models import When, Case
 
 from . import models
+from .forms import SearchForm
 
 CATEGORY_REDIS_KEY = 'category:views'
 PRODUCT_REDIS_KEY = 'product:views'
@@ -18,6 +19,8 @@ r = redis.Redis(host=settings.REDIS_HOST,
 class DataMixin:
     def get_user_context(self, **kwargs):
         context = kwargs
+        if 'search_form' not in context:
+            context['search_form'] = SearchForm()
         auth = self.request.user.is_authenticated
         context['auth'] = auth
         return context

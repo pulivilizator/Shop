@@ -1,9 +1,10 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
     <div class="content__container">
         <div class="content__products">
-            <form action="#" method="get" id="products__filter" class="content__filter">
+            <form id="products__filter" class="content__filter" action="#" method="get">
                 <div class="content__filter_fields">
                   <div class="filter__field_title"><div class="title">Фильтр по параметрам</div><div class="title__icon"><i class="fa-solid fa-filter fa-lg"></i></div></div>
                   <div class="filter__field_price">
@@ -15,7 +16,9 @@
                   </div>
                   <div class="filter__field_checkbox">
                     {% for type, val_list in properties.items %}
+                        {% if val_list %}
                     <div class="filter__checkbox_title" onclick="togglePriceInput('checkbox', '{{ type.name }}')"><div class="checkbox__title">{{ type.name }}</div><div class="checkbox__icon"><i class="fa-solid fa-chevron-down fa-lg"></i></div></div>
+                        {% endif %}
                     <div class="checkboxes" id="{{ type.name }}">
                       {% for v in val_list %}
                         {% if v.value in checkboxes %}
@@ -29,7 +32,7 @@
                   </div>
 
                   <div class="form__buttons">
-                    <button class="submit" type="submit">Применить</button>
+                    <button class="submit" type="submit" onclick="addParameter()">Применить</button>
                     <button class="reset" onclick="resetFilters()">Сбросить</button>
                   </div>
                 </div>
@@ -54,9 +57,10 @@
                     </div>
                 </div>
                 <ul class="product__list">
+                    {% block product_list %}
                     {% for p in products %}
                     <li>
-                        <div class="img"><a href="{{ p.get_absolute_url }}"><img src="{{ p.imagine.url }}" alt="product"></a></div>
+                        <div class="img"><a href="{{ p.get_absolute_url }}"><img src="{{ p.imagine.url }}" alt="product" width="255" height="255"></a></div>
                         <div class="product__text">
                             <div class="title"><a href="{{ p.get_absolute_url }}">{{ p.name|truncatewords:'8' }}</a></div>
                             <div class="description">{{ p.description|truncatewords:'15' }}</div>
@@ -72,10 +76,17 @@
                         </div>
                     </li>
                     {% endfor %}
+                    {% endblock product_list %}
                 </ul>
+
+
+
+
+                {% include 'shop_app/includes/paginator.html' %}
+
+
 
             </div>
         </div>
-
     </div>
 {% endblock %}

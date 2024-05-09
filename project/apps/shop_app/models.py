@@ -4,7 +4,9 @@ from django.urls import reverse
 
 class Category(models.Model):
     """Модель категорий"""
-    category = models.ForeignKey('self', related_name='subcategories', on_delete=models.CASCADE, blank=True, null=True,
+    category = models.ForeignKey('self', related_name='subcategories',
+                                 on_delete=models.CASCADE, blank=True,
+                                 null=True,
                                  limit_choices_to={'category__isnull': True})
     name = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, unique=True)
@@ -31,7 +33,9 @@ class Category(models.Model):
 class Product(models.Model):
     """Модель товара"""
     subcategory = models.ForeignKey(Category, related_name='products',
-                                    on_delete=models.CASCADE, limit_choices_to={'category__isnull': False})
+                                    on_delete=models.CASCADE,
+                                    limit_choices_to={
+                                        'category__isnull': False})
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
     imagine = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
@@ -55,12 +59,14 @@ class Product(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('shop:product', kwargs={'product_id': self.pk, 'product_slug': self.slug})
+        return reverse('shop:product', kwargs={'product_id': self.pk,
+                                               'product_slug': self.slug})
 
 
 class PropertyGroup(models.Model):
     """Группы свойств продуктов"""
-    category = models.ManyToManyField(Category, related_name='groups', blank=True)
+    category = models.ManyToManyField(Category, related_name='groups',
+                                      blank=True)
     name = models.CharField(max_length=200)
 
     class Meta:
@@ -70,7 +76,6 @@ class PropertyGroup(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class PropertyType(models.Model):
@@ -101,10 +106,13 @@ class PropertyValue(models.Model):
 
 class Property(models.Model):
     """Модель для объединения свойства и значения"""
-    group = models.ForeignKey(PropertyGroup, related_name='properties', on_delete=models.CASCADE, blank=True)
-    product = models.ForeignKey(Product, related_name='properties', on_delete=models.CASCADE, blank=True)
-    type = models.ForeignKey(PropertyType, related_name='properties', on_delete=models.CASCADE, blank=True)
-    value = models.ForeignKey(PropertyValue, related_name='properties', on_delete=models.CASCADE, blank=True)
+    group = models.ForeignKey(PropertyGroup, related_name='properties',
+                              on_delete=models.CASCADE, blank=True)
+    product = models.ManyToManyField(Product, related_name='properties', blank=True)
+    type = models.ForeignKey(PropertyType, related_name='properties',
+                             on_delete=models.CASCADE, blank=True)
+    value = models.ForeignKey(PropertyValue, related_name='properties',
+                              on_delete=models.CASCADE, blank=True)
 
     class Meta:
         indexes = [

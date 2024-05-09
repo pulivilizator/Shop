@@ -3,9 +3,6 @@ from django.contrib import admin
 from . import models
 
 
-class PropertyInlineAdmin(admin.TabularInline):
-    model = models.Property
-    list_display = ['group', 'product', 'type', 'value']
 
 
 @admin.register(models.Category)
@@ -23,7 +20,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['price', 'available', 'hit']
     search_fields = ['category', 'name']
     prepopulated_fields = {'slug': ('name',)}
-    inlines = [PropertyInlineAdmin]
 
 
 @admin.register(models.PropertyGroup)
@@ -34,7 +30,7 @@ class PropertyGroupAdmin(admin.ModelAdmin):
 
 @admin.register(models.Property)
 class PropertyAdmin(admin.ModelAdmin):
-    list_display = ['group', 'product', 'type', 'value']
+    list_display = ['group', 'type', 'value']
 
 
 @admin.register(models.PropertyType)

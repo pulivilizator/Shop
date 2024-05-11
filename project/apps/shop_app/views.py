@@ -3,6 +3,7 @@ from decimal import Decimal as D
 from django.contrib.postgres.search import TrigramSimilarity, \
     TrigramWordSimilarity
 from django.db.models import Q
+from django.shortcuts import render
 from django.views import generic
 
 from . import models
@@ -18,7 +19,7 @@ class HomePage(utils.DataMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        populated_categories = utils.get_populated_cats(limit=10)
+        populated_categories = utils.get_populated_cats(limit=8)
         up_context = self.get_user_context(title='Главная страница',
                                            populated_categories=populated_categories)
         context.update(up_context)
@@ -92,18 +93,17 @@ class SubcategoryPage(utils.DataMixin, generic.ListView):
         self.sorted_field = self.request.GET.get(
             'sort') if self.request.GET.get('sort') else 'price'
         if self.values:
-            return set(self.query_products.filter(
+            return self.query_products.filter(
                 Q(price__gte=self.min_price) &
                 Q(price__lte=self.max_price) &
                 Q(available=True) &
                 Q(properties__value__value__in=self.values)).order_by(
-                self.sorted_field))
+                self.sorted_field).distinct()
         else:
-            return (
-                self.query_products.filter(Q(price__gte=self.min_price) &
+            return self.query_products.filter(Q(price__gte=self.min_price) &
                                            Q(price__lte=self.max_price) &
                                            Q(available=True)).order_by(
-                    self.sorted_field))
+                    self.sorted_field).distinct()
 
     def get_properties(self, queryset):
         return {p_type: set(p_val for p_val in
@@ -163,18 +163,17 @@ class SearchResultsPage(utils.DataMixin, generic.ListView):
             'sort') if self.request.GET.get('sort') else 'price'
 
         if self.values:
-            return set(self.query_products.filter(
+            return self.query_products.filter(
                 Q(price__gte=self.min_price) &
                 Q(price__lte=self.max_price) &
                 Q(available=True) &
                 Q(properties__value__value__in=self.values)).order_by(
-                self.sorted_field))
+                self.sorted_field).distinct()
         else:
-            return set(
-                self.query_products.filter(Q(price__gte=self.min_price) &
+            return self.query_products.filter(Q(price__gte=self.min_price) &
                                            Q(price__lte=self.max_price) &
                                            Q(available=True)).order_by(
-                    self.sorted_field))
+                    self.sorted_field).distinct()
 
     def get_properties(self, queryset):
         return {p_type: set(p_val for p_val in
@@ -219,3 +218,14 @@ class ProductPage(utils.DataMixin, generic.DetailView):
                 models.PropertyGroup.objects.filter(Q(category=category) &
                                                     Q(properties__in=models.Property.objects.filter(
                                                         product=product)))}
+
+
+def search_results(request):
+    search_query = request.GET.get('search_query')
+    query_products = models.Product.objects.annotate(
+        similarity=(1 / (1 + .4) * TrigramSimilarity('name',
+                                                     search_query) +
+                    .4 / (1 + .4) * TrigramWordSimilarity(
+                    search_query, 'description'))
+    ).filter(similarity__gt=0.1).order_by('-similarity')
+    return render(request, 'shop_app/includes/search_line.html', {'products': query_products})

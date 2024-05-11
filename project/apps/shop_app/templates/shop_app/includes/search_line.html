@@ -1,0 +1,6 @@
+
+    {% for product in products %}
+        <li class="options__item">
+            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+        </li>
+    {% endfor %}

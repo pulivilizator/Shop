@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/product_detail_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/user.css' %}">
     <link rel="stylesheet" href="{% static 'css/order.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
     <script src="https://www.google.com/recaptcha/api.js?render=6LdBMG4oAAAAAL6Jy5eyoUXt0pD0TIxRjaeznePK"></script>
     <title>{% block title %}{{ title }}{% endblock title %}</title>
 </head>
@@ -59,9 +60,12 @@
                             <a href="{% url 'shop:home' %}"><img src="{% static 'img/logo.png' %}" alt="logo" class="header__logo_img"></a>
                         </div>
 
-                        <form action="{% url 'shop:search' %}" method="get" class="d-flex align-items-center w-50">
+                        <form action="{% url 'shop:search' %}" method="get" class="d-flex align-items-center w-50 form" id="search_form">
                             {{ search_form.search }}
                             <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></button>
+                            <ul class="options">
+
+                            </ul>
                         </form>
 
                         <div class="header__user">
@@ -127,9 +131,6 @@
                         </div>
                         <div class="footer__content_info">
                             <h3>© 2023 Кейс эксклюзив</h3>
-                            <div class="confidentiality">
-                                <a href="{% url 'user:download' %}?politic=1">Политика конфиденциальности</a> / <a href="{% url 'user:download' %}?agree=1">Согласие на обработку персональных данных</a>
-                            </div>
                             <p>Используя данный сайт, вы автоматически принимаете условия пользовательского соглашения и соглашаетесь с политикой конфиденциальности.</p>
                             <p>Указанные на сайте цены не являются публичной офертой и могут быть изменены в любое время.</p>
                         </div>

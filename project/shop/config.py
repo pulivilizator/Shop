@@ -8,6 +8,7 @@ class DjangoSettings:
     secret_key: str
     debug: bool
     hosts: list
+    trusted_origins: list
 
 @dataclass
 class DataBase:
@@ -69,7 +70,8 @@ def config(path=None):
     return Config(
         django_settings=DjangoSettings(secret_key=env('DJANGO_SECRET_KEY'),
                                        debug=env.bool('DEBUG'),
-                                       hosts=env.list('ALLOWED_HOSTS', delimiter=' ')),
+                                       hosts=env.list('ALLOWED_HOSTS', delimiter=' '),
+                                       trusted_origins=env.list('CSRF_TRUSTED_ORIGINS', delimiter=' ')),
 
         db=DataBase(name=env('POSTGRES_DB'),
                     user=env('POSTGRES_USER'),

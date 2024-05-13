@@ -29,7 +29,7 @@ DEBUG = CONFIG.django_settings.debug
 
 ALLOWED_HOSTS = CONFIG.django_settings.hosts
 
-print(ALLOWED_HOSTS)
+CSRF_TRUSTED_ORIGINS=CONFIG.django_settings.trusted_origins
 # Application definition
 
 INSTALLED_APPS = [

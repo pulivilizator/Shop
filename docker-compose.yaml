@@ -11,6 +11,7 @@ services:
       - media-volume:/app/media
     env_file:
       - .env
+    restart: always
     depends_on:
       postgres:
         condition: service_healthy
@@ -100,13 +101,17 @@ services:
       retries: 3
   nginx:
     build: ./nginx
+    restart: always
     volumes:
       - static-volume:/app/static
       - media-volume:/app/media
     ports:
       - "80:80"
     depends_on:
-      - app
+      app:
+        condition: service_started
+      app_celery:
+        condition: service_started
 
 volumes:
   static-volume:

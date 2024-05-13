@@ -30,10 +30,10 @@
   border-radius: 10% 0 0 10%;
   border: 1px solid rgba(128, 128, 128, 0.445);
   border-right: 0;
-  z-index: 9;
 }
 .content__detail_product .detail__product_container .detail__product_main .detail__product_img img {
-  width: 800px;
+  max-width: 800px;
+  background-color: black;
   border-radius: 10% 0 0 10%;
 }
 .content__detail_product .detail__product_container .detail__product_main .detail__product_info {
@@ -292,4 +292,6 @@
 }
 .content__detail_product .detail__product_container .detail__product_recommended .recommended__list li .product__text .more button:hover a {
   color: white;
-}/*# sourceMappingURL=product_detail_style.css.map */
+}
+
+/*# sourceMappingURL=product_detail_style.css.map */

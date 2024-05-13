@@ -22,13 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 CONFIG = config()
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG.django_key.secret_key
+SECRET_KEY = CONFIG.django_settings.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = CONFIG.django_settings.debug
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.0.12']
+ALLOWED_HOSTS = CONFIG.django_settings.hosts
 
+print(ALLOWED_HOSTS)
 # Application definition
 
 INSTALLED_APPS = [

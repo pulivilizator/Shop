@@ -4,8 +4,10 @@ from environs import Env
 
 
 @dataclass
-class DjangoSecretKey:
+class DjangoSettings:
     secret_key: str
+    debug: bool
+    hosts: list
 
 @dataclass
 class DataBase:
@@ -51,7 +53,7 @@ class Stripe:
 
 @dataclass
 class Config:
-    django_key: DjangoSecretKey
+    django_settings: DjangoSettings
     db: DataBase
     redis: RedisDB
     smtp: SMTP
@@ -65,7 +67,9 @@ def config(path=None):
     env.read_env(path)
 
     return Config(
-        django_key=DjangoSecretKey(secret_key=env('DJANGO_SECRET_KEY')),
+        django_settings=DjangoSettings(secret_key=env('DJANGO_SECRET_KEY'),
+                                       debug=env.bool('DEBUG'),
+                                       hosts=env.list('ALLOWED_HOSTS', delimiter=' ')),
 
         db=DataBase(name=env('POSTGRES_DB'),
                     user=env('POSTGRES_USER'),

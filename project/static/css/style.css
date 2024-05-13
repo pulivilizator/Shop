@@ -47,7 +47,7 @@ h3 {
   display: flex;
   align-items: center;
   height: 100%;
-  width: 18%;
+  width: 25%;
   justify-content: space-between;
 }
 .conteiner .header .header__container .header__social .header__social_user .header__info {
@@ -833,6 +833,4 @@ h3 {
 
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

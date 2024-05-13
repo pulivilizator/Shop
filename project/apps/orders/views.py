@@ -28,9 +28,11 @@ class CreateOrderView(utils.DataMixin, generic.CreateView):
         if self.request.user.is_authenticated:
             form.instance.user = self.request.user
         form.instance.coupon = cart.coupon
-        form.instance.discount = cart.coupon.discount
+        if cart.coupon:
+            form.instance.discount = cart.coupon.discount
         super().form_valid(form)
         r = Recommender()
+        print(list(cart))
         r.products_bought(item['product'] for item in cart)
         for item in cart:
             models.OrderItem.objects.create(order=self.object,

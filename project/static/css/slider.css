@@ -47,7 +47,7 @@
   background-color: #717171;
 }
 
-.fade {
+.fade1 {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;

@@ -194,6 +194,7 @@
   font-size: 17px;
 }
 .content__detail_product .detail__product_container .detail__product_propreviews .product__properties .prop__container .property__list li .property li .property__value {
+  max-width: 400px;
   font-size: 17px;
   margin-right: 60px;
 }

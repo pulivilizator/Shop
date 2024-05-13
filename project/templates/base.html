@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/null.css' %}">
     <link rel="stylesheet" href="{% static 'css/slider.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -13,24 +14,39 @@
     <link rel="stylesheet" href="{% static 'css/product_detail_style.css' %}">
     <link rel="stylesheet" href="{% static 'css/user.css' %}">
     <link rel="stylesheet" href="{% static 'css/order.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
     <script src="https://www.google.com/recaptcha/api.js?render=6LdBMG4oAAAAAL6Jy5eyoUXt0pD0TIxRjaeznePK"></script>
     <title>{% block title %}{{ title }}{% endblock title %}</title>
 </head>
-<body>
-    <div class="conteiner">
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <div class="conteiner container-fluid p-0">
         <header>
             <div class="header">
                 <div class="header__container">
 
                     <div class="header__social">
-                        <div class="header__social_sites">
+                        <div class="header__social_sites justify-content-between">
                             <a href="#" class="header__site_icon"><i class="fa-brands fa-vk fa-2xl"></i></a>
                             <a href="#" class="header__site_icon"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
                             <a href="#" class="header__site_icon"><i class="fa-brands fa-square-odnoklassniki fa-2xl"></i></a>
                             <a href="#" class="header__site_icon"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
                             <a href="#" class="header__site_icon"><i class="fa-brands fa-youtube fa-2xl"></i></a>
                         </div>
-                        <div class="header__social_user">
+                        <div class="header__pay d-none d-lg-flex align-items-center ms-2 me-2">
+                            <div class="header__pay_container d-flex ms-4">
+                                <div class="header__pay_icon"><i class="fa-solid fa-truck-fast fa-2xl"></i></div>
+                                <div class="header__pay_text">Бесплатная доставка заказа от 800 руб</div>
+                            </div>
+                            <div class="header__pay_container d-flex ms-4">
+                                <div class="header__pay_icon"><i class="fa-solid fa-gears fa-2xl"></i></div>
+                                <div class="header__pay_text">Сотрудничество с крупными брендами</div>
+                            </div>
+                            <div class="header__pay_container d-flex ms-4">
+                                <div class="header__pay_icon"><i class="fa-solid fa-money-check-dollar fa-2xl"></i></div>
+                                <div class="header__pay_text">Наличный и безналичный расчет</div>
+                            </div>
+                        </div>
+                        <div class="header__social_user container  m-0 d-none d-xl-flex">
                             <a href="#" class="header__info">Акции</a>
                             <a href="#" class="header__info">Контакты</a>
                             <a href="#" class="header__info">Оплата</a>
@@ -38,30 +54,19 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="header__main">
                         <div class="header__logo">
                             <a href="{% url 'shop:home' %}"><img src="{% static 'img/logo.png' %}" alt="logo" class="header__logo_img"></a>
                         </div>
 
-                        <div class="header__pay">
-                            <div class="header__pay_container">
-                                <div class="header__pay_icon"><i class="fa-solid fa-truck-fast fa-2xl"></i></div>
-                                <div class="header__pay_text">Бесплатная доставка заказа от 800 руб</div>
-                            </div>
-                            <div class="header__pay_container">
-                                <div class="header__pay_icon"><i class="fa-solid fa-gears fa-2xl"></i></div>
-                                <div class="header__pay_text">Сотрудничество с крупными брендами</div>
-                            </div>
-                            <div class="header__pay_container">
-                                <div class="header__pay_icon"><i class="fa-solid fa-money-bill-wave fa-2xl"></i></div>
-                                <div class="header__pay_text">Особые условия покупки от 5000 руб</div>
-                            </div>
-                            <div class="header__pay_container">
-                                <div class="header__pay_icon"><i class="fa-solid fa-money-check-dollar fa-2xl"></i></div>
-                                <div class="header__pay_text">Наличный и безналичный расчет</div>
-                            </div>
-                        </div>
+                        <form action="{% url 'shop:search' %}" method="get" class="d-flex align-items-center w-50 form" id="search_form">
+                            {{ search_form.search }}
+                            <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></button>
+                            <ul class="options">
+
+                            </ul>
+                        </form>
 
                         <div class="header__user">
                             {% if not auth %}
@@ -69,7 +74,6 @@
                             {% else %}
                             <a href="{% url 'user:profile' %}" class="header__user_icon"><i class="fa-regular fa-user fa-2xl"></i></a>
                             {% endif %}
-                            <a href="#" class="header__user_icon"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></a>
                             <a href="{% url 'likes:likes' %}" class="header__user_icon"><i class="fa-regular fa-heart fa-2xl"></i></a>
                             <a href="{% url 'cart:cart' %}" class="header__user_icon"><i class="fa-solid fa-cart-arrow-down fa-2xl"></i></a>
                         </div>
@@ -83,7 +87,7 @@
             </div>
         </header>
 
-        <div class="content">
+        <div class="content" id="content">
             {% block content %}
             <div class="content__container"></div>
             {% endblock content %}
@@ -127,9 +131,6 @@
                         </div>
                         <div class="footer__content_info">
                             <h3>© 2023 Кейс эксклюзив</h3>
-                            <div class="confidentiality">
-                                <a href="{% url 'user:download' %}?politic=1">Политика конфиденциальности</a> / <a href="{% url 'user:download' %}?agree=1">Согласие на обработку персональных данных</a>
-                            </div>
                             <p>Используя данный сайт, вы автоматически принимаете условия пользовательского соглашения и соглашаетесь с политикой конфиденциальности.</p>
                             <p>Указанные на сайте цены не являются публичной офертой и могут быть изменены в любое время.</p>
                         </div>
@@ -149,5 +150,6 @@
     <script src="{% static 'js/order.js' %}"></script>
     <script src="{% static 'js/coupon.js' %}"></script>
     <script src="https://kit.fontawesome.com/18a5f50620.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -29,5 +29,3 @@ WORKDIR /app
 
 COPY --from=poetry_venv /app/.venv ./.venv
 COPY project .
-
-EXPOSE 8000:8000

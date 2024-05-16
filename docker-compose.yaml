@@ -105,12 +105,26 @@ services:
     volumes:
       - static-volume:/app/static
       - media-volume:/app/media
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       app:
         condition: service_started
       app_celery:
+        condition: service_started
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot/ --email mail@gmail.com --agree-tos --no-eff-email -d domain.com -d www.domain.com
+    restart: always
+    depends_on:
+      nginx:
         condition: service_started
 
 volumes:

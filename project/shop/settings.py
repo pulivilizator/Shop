@@ -161,6 +161,8 @@ REDIS_DB = CONFIG.redis.db
 CART_SESSION_ID = 'cart'
 LIKES_SESSION_ID = 'likes'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_HOST = CONFIG.smtp.email_host
 EMAIL_HOST_USER = CONFIG.smtp.email_host_user
 EMAIL_HOST_PASSWORD = CONFIG.smtp.email_host_password
